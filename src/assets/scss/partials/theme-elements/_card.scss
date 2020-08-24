@@ -1,0 +1,75 @@
+.card {
+  border-radius: 0;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border: none;
+  margin-bottom: 30px;
+  transition: all 0.5s ease-in-out;
+  background-color: #fff;
+  position: relative;
+
+  .card-header {
+    padding: 20px 25px;
+    text-align: center;
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  .card-footer {
+    border-top: 1px solid #f1f1f1;
+    background: transparent;
+    padding: 25px;
+  }
+
+  .card-block,
+  .card-body {
+    padding: 30px 25px;
+
+    .card-input {
+      .ant-form-item-control-input {
+        background: $theme-background;
+
+        .ant-input,
+        .ant-input-password {
+          background-color: transparent;
+          // padding: 0.6rem;
+          border-radius: 0.3rem;
+          font-size: 1.1rem;
+          &::placeholder {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+
+    .other-links {
+      text-align: center;
+    }
+  }
+
+  &.card-load {
+    position: relative;
+    overflow: hidden;
+
+    .card-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background-color: rgba(256, 256, 256, 0.7);
+      z-index: 999;
+
+      i {
+        margin: 0 auto;
+        color: $primary-color;
+        font-size: 24px;
+        align-items: center;
+        display: flex;
+      }
+    }
+  }
+}
