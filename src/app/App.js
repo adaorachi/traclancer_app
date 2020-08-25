@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Loader from './layouts/Loader';
 import Navbar from './layouts/Navbar';
+import Drawer from './layouts/Drawer';
 import { authRoutes, authorizedRoutes } from '../config/Routes';
 import ScrollTop from './ScrollTop';
+import 'reset-css';
 import '../assets/scss/style.scss';
 
 function App(props) {
@@ -37,18 +39,26 @@ function App(props) {
       <Suspense fallback={<Loader />}>
         <ScrollTop>
           <div className="app-body-container">
-            <div className="wrapper-container">
+          {mapRoutes(authRoutes)}
+          {count ? 
+            (<div className="wrapper-container">
               <Navbar />
               <main className="main-container">
-                <Switch>
-                  {/* {!count ? mapRoutes(authRoutes) : (<Redirect to="/dashboard" />)
-                  } */}
-                  {mapRoutes(authRoutes)}
-                  {count ? mapRoutes(authorizedRoutes) : (<Redirect to="/login" />)
-                  }
-                </Switch>
+                <div className="nav-drawer">
+                  <Drawer />
+                </div>
+                <div className="main-page">
+                  <Switch>
+                    {/* {!count ? mapRoutes(authRoutes) : (<Redirect to="/dashboard" />)
+                    } */}
+                    {mapRoutes(authorizedRoutes)} 
+                  </Switch>
+                </div>
               </main>
             </div>
+            )
+            : (<Redirect to="/login" />)
+          }
           </div>
         </ScrollTop>
       </Suspense>

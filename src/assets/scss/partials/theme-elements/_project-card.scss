@@ -1,0 +1,58 @@
+.project-category {
+  .category-card {
+    width: 220px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  .card-header {
+    position: relative;
+  }
+
+  .project-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    font-size: 35px;
+    border-radius: 8px;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+  }
+
+  .card-body {
+    padding: 0.7rem;
+    text-align: right;
+
+    h4 {
+      color: #666;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  }
+
+  .project-no {
+    span {
+      display: block;
+      color: #01a9ac;
+      &:nth-child(1) {
+        font-size: 1rem;
+      }
+    }
+  }
+  .card-footer {
+    padding: 0.5rem;
+    text-align: center;
+    // box-shadow: 0px -2px 3px #e8e2e2;
+    box-shadow: 0 -6px 6px -6px #737070;
+    color: #fff;
+    font-size: 1rem;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}

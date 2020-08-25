@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Cormorant+Infant&family=Teko&family=Montserrat&family=Niconne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Assistant&family=Cormorant+Infant&family=Teko&family=Montserrat&family=Niconne&display=swap');
 // @import "~bootstrap/dist/css/bootstrap";
 @import "partials/variables";
 @import "partials/general";
+@import "partials/mixins/alert";
 @import "partials/theme-elements/authentication";
 @import "partials/theme-elements/radiobox-checkbox";
 @import "partials/theme-elements/button";
 @import "partials/theme-elements/card";
+@import "partials/theme-elements/navbar";
+@import "partials/theme-elements/drawer";
+@import "partials/theme-elements/project-card";
 @import "~antd/dist/antd.css";

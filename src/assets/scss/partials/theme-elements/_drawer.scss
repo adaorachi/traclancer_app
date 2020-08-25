@@ -1,0 +1,29 @@
+.nav-drawer {
+  background: $theme-color2;
+  height: 100vh;
+  width: 17%;
+
+  .nav-drawer-container {
+    position: fixed;
+
+    .navbar-drawer-links {
+      padding: 2rem 1.4rem;
+      width: 100%;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      color: #dedede;
+      padding: 0.9rem 0;
+
+      .list-icon {
+        display: flex;
+      }
+
+      .list-name {
+        margin-left: 0.6rem;
+      }
+    }
+  }
+}
