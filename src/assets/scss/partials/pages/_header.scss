@@ -1,0 +1,60 @@
+.page-container {
+  padding: 1rem;
+
+  .header-content {
+    margin-bottom: 3rem!important;
+  }
+}
+
+.dashboard-container {
+  .card {
+    .widget-content-wrapper {
+      font-size: 1rem;
+
+      .widget-numbers {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.project-container {
+  .row > * {
+    box-sizing: border-box;
+  }
+  .view-all {
+    color: #01dbdf;
+
+    &:hover {
+      color: darken(#01dbdf, 10);
+    }
+  }
+}
+
+.bg-orange {
+  background: linear-gradient(to right, #fe9365, #feb798)!important
+}
+
+.bg-blue {
+  background: linear-gradient(to right, #01a9ac, #01dbdf) !important;
+}
+
+.bg-green {
+  background: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
+}
+
+.bg-pink {
+  background: linear-gradient(to right, #fe5d70, #fe909d)!important;
+}
+
+.bg-turguiose {
+  background: linear-gradient(to right, #01a9ac, #01dbdf);
+}
+
+.bg-grey {
+  background: linear-gradient(to right, #bdc3c7, #2c3e50);
+}
+
+.bg-dark-blue {
+  background: linear-gradient(to right, #000428, #004e92);
+}

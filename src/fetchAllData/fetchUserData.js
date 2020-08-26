@@ -1,4 +1,4 @@
-import { getUserSuccess } from '../actions/index';
+import { getUserSuccess } from '../actions/userAction';
 import axios from 'axios';
 
 export const getUserData = (userData, isSignUp=true) => {

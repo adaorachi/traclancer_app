@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Form, notification } from 'antd';
 import * as Icon from 'react-feather';
 import { getUserData } from '../../fetchAllData/fetchUserData';
@@ -15,9 +15,6 @@ class Auth extends Component {
     super(props);
 
     this.state = {
-      values: {
-        first_name: '',
-      },
       signupError: null,
       userData: null,
     }

@@ -2,10 +2,12 @@
   background: $theme-color2;
   height: 100vh;
   width: 17%;
+  height: 100vh;
+  left: 0;
+  color: #a9b7d0;
+  position: fixed;
 
   .nav-drawer-container {
-    position: fixed;
-
     .navbar-drawer-links {
       padding: 2rem 1.4rem;
       width: 100%;

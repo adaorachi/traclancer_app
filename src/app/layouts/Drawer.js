@@ -8,15 +8,16 @@ export default function Drawer() {
   const listIcons = {
     0: { icon: <Icon.Calendar color={color} size={size} />, link: '/dashboard' },
     1: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
-    2: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
-    3: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
-    4: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
+    2: { icon: <Icon.Calendar color={color} size={size} />, link: '/available_projects' },
+    3: { icon: <Icon.Calendar color={color} size={size} />, link: '/my_project' },
+    4: { icon: <Icon.Calendar color={color} size={size} />, link: '/create_project' },
+    5: { icon: <Icon.ShoppingBag color={color} size={size} />, link: '/project_details' },
   };
   // const exactLink = (listIcons[index].link === '/');
   return (
     <div className="nav-drawer-container">
       <ul className="navbar-drawer-links">
-        {['Dashboard', 'Claimed Projects', 'Available Projects', 'Artists', 'Albums'].map((text, index) => (
+        {['Dashboard', 'Claimed Projects', 'Available Projects', 'My Project', 'Create Project', 'Project Details'].map((text, index) => (
           <li className="nav-list">
             <NavLink exact={listIcons[index].link === '/'} to={listIcons[index].link} className="nav-item text-primary-dim">
               <div className="nav-link">
