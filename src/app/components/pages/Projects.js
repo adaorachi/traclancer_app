@@ -24,7 +24,11 @@ class Projects extends Component {
 
   render() {
     const { projectCatData } = this.props;
+    console.log(this.props)
     let mapProjectCat = '';
+    if (projectCatData.length > 0) {
+      
+    }
     // if (projectCatData.length > 0) {
     //   console.log(projectCatData)
 

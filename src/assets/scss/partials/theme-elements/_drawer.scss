@@ -1,16 +1,28 @@
 .nav-drawer {
   background: $theme-color2;
   height: 100vh;
-  width: 17%;
+  width: 220px;
   height: 100vh;
   left: 0;
   color: #a9b7d0;
   position: fixed;
 
+  @media screen and (max-width: 789px) {
+    & {
+      display: none;
+    }
+  }
+
   .nav-drawer-container {
     .navbar-drawer-links {
       padding: 2rem 1.4rem;
       width: 100%;
+    }
+
+    .nav-item {
+      &.active .list-name {
+        color: #1dc4e9;
+      }
     }
 
     .nav-link {
@@ -29,3 +41,11 @@
     }
   }
 }
+.close {
+  display: none!important;
+}
+
+.open {
+  display: block!important;
+}
+

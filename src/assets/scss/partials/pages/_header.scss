@@ -2,7 +2,7 @@
   padding: 1rem;
 
   .header-content {
-    margin-bottom: 3rem!important;
+    margin-bottom: 3rem !important;
   }
 }
 
@@ -31,8 +31,92 @@
   }
 }
 
+.available-project-container,
+.project-details-page-container {
+  .list-group-item {
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    margin-bottom: 30px;
+
+    .heading-title-non-highlight,
+    .heading-title {
+      color: $theme_color1;
+    }
+
+    .heading-title {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.project-details-page-container {
+  .nav-item.active {
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 4px;
+      background-color: $theme_color1;
+      position: absolute;
+      bottom: 0;
+
+      a {
+        color: #01a9ac;
+      }
+    }
+  }
+}
+
+.contact {
+  .links {
+    width: 22px;
+    height: 22px;
+    background: #01a9ac;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.3rem;
+    margin-right: 0.4rem;
+
+    a {
+      display: inline-flex;
+    }
+  }
+}
+
+.button-info,
+.button-primary {
+  border-radius: 15px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 4px 10px;
+  min-height: auto;
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  color: #fff;
+
+  &:hover {
+    color: rgb(226, 224, 224);
+  }
+}
+
+.button-primary {
+  background: $theme-color2_linear;
+}
+
+.button-info {
+  background: $theme-color_linear;
+}
+
 .bg-orange {
-  background: linear-gradient(to right, #fe9365, #feb798)!important
+  background: linear-gradient(to right, #fe9365, #feb798) !important;
 }
 
 .bg-blue {
@@ -44,7 +128,7 @@
 }
 
 .bg-pink {
-  background: linear-gradient(to right, #fe5d70, #fe909d)!important;
+  background: linear-gradient(to right, #fe5d70, #fe909d) !important;
 }
 
 .bg-turguiose {
@@ -57,4 +141,52 @@
 
 .bg-dark-blue {
   background: linear-gradient(to right, #000428, #004e92);
+}
+
+.create-project-form {
+  .ant-row.ant-form-item {
+    margin-bottom: 15px !important;
+  }
+
+  .project-stage-card,
+  .ant-btn.ant-btn-dashed {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .ant-btn.ant-btn-dashed {
+    @include flex(true);
+
+    width: 15rem;
+    min-height: 15rem;
+    max-width: 100%;
+
+    .anticon.anticon-plus {
+      @include flex(false);
+
+      width: 3rem;
+      height: 3rem;
+      background: $theme-color_linear;
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    span {
+      margin: 0 !important;
+    }
+  }
+
+  .ant-space-item {
+    position: relative;
+  }
+
+  .anticon.anticon-minus-circle {
+    position: absolute;
+    right: 0;
+    top: -10px;
+  }
+
+  .ant-input-number {
+    width: 100%;
+  }
 }

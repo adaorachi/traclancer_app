@@ -72,7 +72,6 @@ strong {
   color: $secondary-color;
 
   form-link {
-    
     &:hover {
       color: $primary-color;
     }
@@ -85,11 +84,19 @@ strong {
   margin-top: 56px;
 
   .main-page {
-    width: 83%;
-    margin-left: 17%;
+    width: 100%;
+    margin-left: 220px;
     padding: 1rem;
+
+    &.open {
+      // width: 100%;
+      margin-left: 0;
+    }
+    
+    @media screen and (max-width: 789px){
+      & {
+        margin-left: 0;
+      }
+    }
   }
-
 }
-
-

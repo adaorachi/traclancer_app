@@ -10,6 +10,8 @@
   .card-header {
     padding: 20px 25px;
     text-align: center;
+    background-color: transparent;
+    border: none;
 
     h3 {
       font-size: 2rem;
@@ -28,7 +30,7 @@
 
     .card-input {
       .ant-form-item-control-input {
-        background: $theme-background;
+        // background: $theme-background;
 
         .ant-input,
         .ant-input-password {

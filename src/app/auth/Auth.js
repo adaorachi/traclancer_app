@@ -108,7 +108,7 @@ class Auth extends Component {
               <span className="r" />
             </div>
             <div className="card">
-              <div className="card-body text-center">
+              <div className="card-body">
                 <div className="card-header">
                   {cardHeader}
                 </div>

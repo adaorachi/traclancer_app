@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 export default function Drawer() {
   const size = 16;
-  const color = '#49dcc8'
+  const color = '#1dc4e9'
   const listIcons = {
-    0: { icon: <Icon.Calendar color={color} size={size} />, link: '/dashboard' },
+    0: { icon: <Icon.Home color={color} size={size} />, link: '/dashboard' },
     1: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
     2: { icon: <Icon.Calendar color={color} size={size} />, link: '/available_projects' },
     3: { icon: <Icon.Calendar color={color} size={size} />, link: '/my_project' },

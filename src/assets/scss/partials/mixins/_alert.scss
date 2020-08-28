@@ -13,8 +13,13 @@
 	text-align: center;
 }
 
-@mixin flex() {
+@mixin flex($direction) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@if ($direction) {
+		flex-direction: column;
+	} @else {
+		flex-direction: row;
+	}
 }

@@ -3,7 +3,7 @@ import avatar from '../../../assets/images/user/avatar-2.jpg';
 
 export default function AvailableProjects() {
   return (
-    <div className="avaliable-page-container page-container">
+    <div className="available-project-container page-container">
 
       <div className="row">
         <div className="col-12">
@@ -32,7 +32,7 @@ export default function AvailableProjects() {
                 <div className="list-group-item list-group-item-action flex-column align-items-start ">
                   <div className="d-flex flex-column flex-md-row w-100 justify-content-between align-items-center mb-2">
                     <a href="#">
-                      <h5 className="lead">Responsive web - local ecommerce market place </h5>
+                      <h5 className="lead heading-title">Responsive web - local ecommerce market place </h5>
                     </a>
                     <span className="budget lead">$2,000</span>
                     <small>3 days ago</small>
@@ -60,10 +60,11 @@ export default function AvailableProjects() {
                   </div>
                 </div>
                 <div className="list-group-item list-group-item-action flex-column align-items-start">
-                  <div className="d-flex flex-column flex-md-row w-100 justify-content-between mb-2">
+                  <div className="d-flex flex-column flex-md-row w-100 justify-content-between align-items-center mb-2">
                     <a href="#">
-                      <h5 className="mb-1">Responsive web - local ecommerce market place </h5>
+                      <h5 className="lead heading-title">Responsive web - local ecommerce market place </h5>
                     </a>
+                    <span className="budget lead">$2,000</span>
                     <small>3 days ago</small>
                   </div>
                   <p className="mb-1">
@@ -89,8 +90,6 @@ export default function AvailableProjects() {
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>

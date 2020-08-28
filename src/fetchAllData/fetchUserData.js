@@ -1,9 +1,11 @@
 import { getUserSuccess } from '../actions/userAction';
 import axios from 'axios';
 
+// const url = "https://enigmatic-retreat-81755.herokuapp.com/api/v1/";
+const url = "http://localhost:3001/api/v1/"
 export const getUserData = (userData, isSignUp=true) => {
   let endPoint;
-  endPoint = (isSignUp) ? 'http://localhost:3001/api/v1/registrations' : 'http://localhost:3001/api/v1/sessions';
+  endPoint = (isSignUp) ? `${url}registrations` : `${url}sessions`;
   return (dispatch) => {
     return axios
       .post(endPoint,
@@ -11,6 +13,7 @@ export const getUserData = (userData, isSignUp=true) => {
         { withCredentials: true }
       ).then(response => {
         dispatch(getUserSuccess(response.data))
+        console.log(response.data)
       }).catch(error => {
         // console.log(error)
       })
@@ -20,10 +23,10 @@ export const getUserData = (userData, isSignUp=true) => {
 export const isUserLoggedIn = () => {
   return (dispatch) => {
     return axios
-      .get('http://localhost:3001/api/v1/logged_in',
+      .get(`${url}logged_in`,
         { withCredentials: true }
       ).then(response => {
-        // console.log(response)
+        console.log(response)
         dispatch(getUserSuccess(response.data))
       }).catch(error => {
         // console.log(error)
