@@ -87,15 +87,16 @@ strong {
     width: 100%;
     margin-left: 220px;
     padding: 1rem;
+    transition: all 650ms;
 
-    &.open {
-      // width: 100%;
+    &.open-d {
       margin-left: 0;
     }
-    
-    @media screen and (max-width: 789px){
+
+    @media screen and (max-width: 789px) {
       & {
         margin-left: 0;
+        margin-top: 4rem;
       }
     }
   }

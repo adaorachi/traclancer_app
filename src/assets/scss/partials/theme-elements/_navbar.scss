@@ -4,10 +4,21 @@
     width: 100%;
     background: #fff;
     padding: 0;
-    box-shadow: 0 0 11px rgba(0,0,0,0.13);
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.13);
     position: fixed;
     top: 0;
     z-index: 1000;
+
+    @media screen and (max-width: 789px) {
+      & {
+        background: $theme-color2;
+      }
+
+      .navbar-collapse {
+        height: 60px;
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.13);
+      }
+    }
   }
 
   .toggle-button {
@@ -15,6 +26,30 @@
     outline: none;
     background: transparent;
     display: inline-flex;
+
+    .bar {
+      height: 3px;
+      width: 15px;
+      background: $theme-color_linear;
+      margin-bottom: 2px;
+      transition: all 650ms;
+    }
+
+    &.close-d {
+      .top-bar {
+        transform: rotate(45deg);
+        top: 5px;
+        position: relative;
+      }
+
+      .bottom-bar {
+        display: none;
+      }
+
+      .middle-bar {
+        transform: rotate(-45deg);
+      }
+    }
   }
 
   .logo {
@@ -41,6 +76,7 @@
   .navbar-brand {
     width: 220px;
     background: $theme-color2;
+
     @include flex(false);
 
     .navbar-brand-image {
@@ -59,7 +95,7 @@
 
 .ant-dropdown-menu {
   width: 15rem;
-  top: 20px!important;
+  top: 20px !important;
 
   &::after {
     content: "";
@@ -71,7 +107,6 @@
     border: 10px solid #fff;
     border-right-color: transparent;
     border-bottom-color: transparent;
-    -webkit-box-shadow: -10px -9px 23px 1px rgba(0,0,0,0.1);
-    box-shadow: -10px -9px 23px 1px rgba(0,0,0,0.1);
+    box-shadow: -10px -9px 23px 1px rgba(0, 0, 0, 0.1);
   }
 }

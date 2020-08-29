@@ -5,8 +5,8 @@ class Dashboard extends Component {
   constructor() {
     super();
   }
-  
-  render() {  
+
+  render() {
     return (
       <div className="dashboard-container page-container">
         <div className="header-content bg-white p-3">
@@ -97,7 +97,7 @@ class Dashboard extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

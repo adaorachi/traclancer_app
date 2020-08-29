@@ -2,14 +2,24 @@
   background: $theme-color2;
   height: 100vh;
   width: 220px;
-  height: 100vh;
   left: 0;
   color: #a9b7d0;
   position: fixed;
+  transition: left 650ms;
+
+  &.close-d {
+    left: -220px;
+  }
+
+  &.open-d {
+    left: 0;
+  }
 
   @media screen and (max-width: 789px) {
     & {
-      display: none;
+      // left: -220px;
+      top: 0;
+      z-index: 9999;
     }
   }
 
@@ -41,11 +51,3 @@
     }
   }
 }
-.close {
-  display: none!important;
-}
-
-.open {
-  display: block!important;
-}
-

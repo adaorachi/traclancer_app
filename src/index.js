@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import './index.css';
+import history from './app/history';
 import App from './app/App';
 import rootReducer from './reducers/rootReducer';
 import { isUserLoggedIn } from './fetchAllData/fetchUserData';
@@ -15,9 +16,9 @@ store.dispatch(isUserLoggedIn());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App history={history} />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

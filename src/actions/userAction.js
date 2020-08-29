@@ -1,8 +1,8 @@
 import { GET_USER } from './types';
 
-export const getUserSuccess = (userData) => {
-  return {
-    type: GET_USER,
-    payload: userData,
-  }
-}
+const getUserSuccess = userData => ({
+  type: GET_USER,
+  payload: userData,
+});
+
+export { getUserSuccess };

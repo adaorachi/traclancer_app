@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+/* eslint-disable prefer-promise-reject-errors */
+import React from 'react';
 import { Form, Input, Checkbox } from 'antd';
 
 export default function SignUpForm() {
   return (
-    <Fragment>
+    <div className="sign-up-form">
       <Form.Item
         className="card-input"
         name="first_name"
@@ -110,22 +111,22 @@ export default function SignUpForm() {
         name="agreement"
         valuePropName="checked"
         rules={[
-          { validator: (_, value) => value ? Promise.resolve() : Promise.reject('Should accept agreement') },
+          { validator: (_, value) => (value ? Promise.resolve() : Promise.reject('Should accept agreement')) },
         ]}
       >
         <Checkbox className="text-muted">
-          I have read the <a href="/">agreement</a>
+          I have read the
+          {' '}
+          <a href="/">agreement</a>
         </Checkbox>
       </Form.Item>
 
       <div className="form-input-button">
-        <button type="primary" type="submit" className="login-form-button form-button">
-          Sign Up
-                    </button>
+        <button type="submit" className="login-form-button form-button">
+          SignUp
+        </button>
       </div>
-    </Fragment>
+    </div>
 
   );
 }
-
-

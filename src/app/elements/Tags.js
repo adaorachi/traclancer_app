@@ -14,7 +14,7 @@ class Tags extends Component {
 
   handleClose = removedTag => {
     const tags = this.state.tags.filter(tag => tag !== removedTag);
-    console.log(tags);
+    this.getTag(tags)
     this.setState({ tags });
   };
 
@@ -26,13 +26,17 @@ class Tags extends Component {
     this.setState({ inputValue: e.target.value });
   };
 
+  getTag = (val) => {
+    this.props.handleTag(val);
+  }
+
   handleInputConfirm = () => {
     const { inputValue } = this.state;
     let { tags } = this.state;
     if (inputValue && tags.indexOf(inputValue) === -1) {
       tags = [...tags, inputValue];
     }
-    console.log(tags);
+    this.getTag(tags)
     this.setState({
       tags,
       inputVisible: false,

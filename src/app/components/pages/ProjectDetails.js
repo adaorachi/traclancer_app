@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import avatar from '../../../assets/images/user/avatar-2.jpg';
+// import avatar from '../../../assets/images/user/avatar-2.jpg';
 import * as Icon from 'react-feather';
 import CreateProjectStage from '../../forms/CreateProjectStage';
 
 export default function ProjectDetails() {
-  const avatar1 = 'https://demo.dashboardpack.com/architectui-html-free/assets/images/avatars/4.jpg'
+  const avatar1 = 'https://demo.dashboardpack.com/architectui-html-free/assets/images/avatars/4.jpg';
   const size = 12;
-  const color = ['#fe9365', '#01a9ac', '#0ba360'];
-  let mapSocialIcon;
+  // const color = ['#fe9365', '#01a9ac', '#0ba360'];
   const socialIcons = [{ icon: Icon.Mail, link: '/' }, { icon: Icon.Twitter, link: '/' }, { icon: Icon.Linkedin, link: '/' }];
 
-  mapSocialIcon = socialIcons.map((iconProp, index) => (
-    <div className="links">
+  const mapSocialIcon = socialIcons.map(iconProp => (
+    <div className="links" key={iconProp}>
       <Link to={iconProp.link} className="social-link">
         <iconProp.icon color="#fff" size={size} />
       </Link>
     </div>
-  ))
+  ));
+
   return (
     <div className="project-details-page-container page-container">
       <div className="col-12">
@@ -31,16 +31,17 @@ export default function ProjectDetails() {
                 <div className="row d-flex align-items-center">
                   <div className="col-9">
                     <h3 className="f-w-300 d-flex align-items-center m-b-0">
-                      <i className="feather icon-arrow-up text-c-green f-30 m-r-5"></i> $249.95
-                      </h3>
+                      <i className="feather icon-arrow-up text-c-green f-30 m-r-5" />
+                      {' '}
+                      $249.95
+                    </h3>
                   </div>
                   <div className="col-3 text-right">
                     <p className="m-b-0">50%</p>
                   </div>
                 </div>
-                <div className="progress m-t-30 shadow" style={{height: '7px'}}>
-                  <div className="progress-bar progress-c-theme button-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={{width: '50%'}}>
-                  </div>
+                <div className="progress m-t-30 shadow" style={{ height: '7px' }}>
+                  <div className="progress-bar progress-c-theme button-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={{ width: '50%' }} />
                 </div>
               </div>
             </div>
@@ -48,11 +49,10 @@ export default function ProjectDetails() {
         </div>
 
         <div>
-          
-        <CreateProjectStage />
+
+          <CreateProjectStage />
 
         </div>
-
 
         <div className="card rounded">
           <div className="card-body">
@@ -196,8 +196,8 @@ export default function ProjectDetails() {
                         </table>
                       </div>
                       <div className="d-block text-center card-footer">
-                        <button className="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i className="pe-7s-trash btn-icon-wrapper"> </i></button>
-                        <button className="btn-wide btn btn-success">Save</button>
+                        <button type="button" className="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i className="pe-7s-trash btn-icon-wrapper"> </i></button>
+                        <button type="button" className="btn-wide btn btn-success">Save</button>
                       </div>
                     </div>
                   </div>
@@ -208,5 +208,5 @@ export default function ProjectDetails() {
         </div>
       </div>
     </div>
-  )
+  );
 }
