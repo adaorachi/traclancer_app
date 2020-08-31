@@ -35,7 +35,7 @@ class ProjectDetail extends Component {
               <h5 className="col-md-4">
                 Budget
                 $
-                {project.amount}
+                {project.budget}
               </h5>
             </div>
           </div>

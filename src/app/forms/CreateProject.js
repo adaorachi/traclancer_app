@@ -63,7 +63,7 @@ class CreateProject extends Component {
   };
 
   handleSubmit() {   
-    const aa = ['title', 'estimated_time', 'amount'];
+    const aa = ['title', 'estimated_time', 'budget'];
     const values = {}
     aa.forEach((a) => {
       values[a] = document.getElementById(a).value
@@ -181,7 +181,7 @@ class CreateProject extends Component {
               <div className="col-md-4">
                 <Form.Item
                   className="card-input"
-                  name="amount"
+                  name="budget"
                   rules={[
                     {
                       required: true,
@@ -190,8 +190,8 @@ class CreateProject extends Component {
                   ]}>
 
                   <div className="form-group">
-                    <label htmlFor="amount">Project Budget</label>
-                    <InputNumber id="amount" placeholder="$100" />
+                    <label htmlFor="budget">Project Budget</label>
+                    <InputNumber id="budget" placeholder="$100" />
                   </div>
                 </Form.Item>
               </div>

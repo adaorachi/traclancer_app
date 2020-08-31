@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
     "@ckeditor/ckeditor5-react": "^2.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -13,6 +14,8 @@
     "bootstrap": "^4.5.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-circular-progressbar": "^2.0.3",
+    "react-compound-timer": "^1.2.0",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-moment": "^0.9.7",

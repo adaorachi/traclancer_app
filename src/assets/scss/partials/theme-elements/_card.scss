@@ -37,7 +37,6 @@
           background-color: transparent;
           // padding: 0.6rem;
           border-radius: 0.3rem;
-          
         }
       }
     }
@@ -71,4 +70,93 @@
       }
     }
   }
+}
+
+.project-card {
+  box-shadow: 0 0.46875rem 2.1875rem rgba(0, 0, 0, 0.03), 0 0.9375rem 1.40625rem rgba(0, 0, 0, 0.03),
+    0 0.25rem 0.53125rem rgba(0, 0, 0, 0.05), 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.03);
+}
+
+.project-details-page-container {
+  .project-card {
+    overflow: hidden;
+
+    .other-info {
+      @include flex(false);
+
+      position: absolute;
+      top: -25px;
+      right: -25px;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      // background: linear-gradient(to right, #01a9ac, #01dbdf);
+      background: $theme-color1;
+
+      // &:hover {
+      //   transform: scale(1.3);
+      // }
+    }
+  }
+
+  .line {
+    border-top: 1px solid rgb(241, 241, 241);
+  }
+
+  .ant-progress-inner {
+    // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .ant-progress-outer {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ant-progress-line {
+    display: flex !important;
+    align-items: center;
+    // flex-direction: column;
+  }
+
+  .ant-progress-text {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .pause-timer,
+  .resume-timer { 
+    cursor: pointer;
+    transition: all 650ms;
+
+    &:hover {
+      top: 2px;
+      color: lighten($theme-color1, 4) !important;
+      box-shadow: none !important;
+      transform: scale(1.1);
+    }
+  }
+
+  .anticon-play-circle,
+  .anticon-pause-circle {
+    box-shadow: 0 8px 6px -6px rgb(92, 91, 91);
+    color: $theme-color1 !important;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .pause-timer {
+    display: none;
+  }
+
+  .timer-button {
+    button {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+  }
+
+  // .time-content {
+  //   font-size: 1rem;
+  // }
 }

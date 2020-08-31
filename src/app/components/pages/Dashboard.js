@@ -9,7 +9,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container page-container">
-        <div className="header-content bg-white p-3">
+        <div className="header-content p-3">
           <h4>Good Morning Mcannie!</h4>
         </div>
         <div className="dashboard-main">

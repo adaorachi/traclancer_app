@@ -34,7 +34,7 @@ class Auth extends Component {
         });
 
         setTimeout(() => {
-          history.push('/dashboard');
+          history.push('/');
         }, 10);
       } else if (userData.status === 401 && !userData.logged_in) {
         notification.error({

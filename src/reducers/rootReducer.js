@@ -4,6 +4,8 @@ import {
   projectCatReducer,
   catProjectsReducer,
   projectDetailReducer,
+  claimedProjectReducer,
+  projectStageReducer,
 } from './projectReducer';
 
 export default combineReducers({
@@ -11,4 +13,6 @@ export default combineReducers({
   projectCatData: projectCatReducer,
   catProjectsData: catProjectsReducer,
   projectDetailData: projectDetailReducer,
+  claimedProjectData: claimedProjectReducer,
+  projectStageData: projectStageReducer,
 });

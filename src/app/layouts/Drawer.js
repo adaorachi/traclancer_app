@@ -7,7 +7,7 @@ export default function Drawer() {
   const color = '#1dc4e9';
   const listIcons = {
     0: { icon: <Icon.Home color={color} size={size} />, link: '/' },
-    1: { icon: <Icon.Calendar color={color} size={size} />, link: '/' },
+    1: { icon: <Icon.Calendar color={color} size={size} />, link: '/claimed_projects' },
     2: { icon: <Icon.Calendar color={color} size={size} />, link: '/projects' },
     3: { icon: <Icon.Calendar color={color} size={size} />, link: '/create_project' },
     4: { icon: <Icon.ShoppingBag color={color} size={size} />, link: '/project_details' },

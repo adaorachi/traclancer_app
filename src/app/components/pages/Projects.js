@@ -24,7 +24,7 @@ class Projects extends Component {
     if (projectCatData.length > 0) {
       mapProjectCat = projectCatData.map((projectCat, index) => (
         <div key={projectCat.attributes.id} className="col-md-6 col-xl-4 p-2 my-4">
-          <div className="card-body bg-white p-4">
+          <div className="card-body project-card bg-white p-4">
             <div className="card-icon">
               <div className={`project-icon ${colors[index]}`}>
                 <Icon.Calendar color="#fff" width={28} />

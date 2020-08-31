@@ -2,6 +2,8 @@ import {
   GET_PROJECT_CATEGORIES,
   GET_CATEGORY_PROJECTS,
   GET_PROJECT_DETAIL,
+  GET_ALL_CLAIMED_PROJECTS,
+  GET_PROJECT_STAGES,
 } from './types';
 
 const getProjectCatSuccess = projectCatData => ({
@@ -19,8 +21,20 @@ const getProjectDetailSuccess = projectDetail => ({
   payload: projectDetail,
 });
 
+const getAllClaimedProjectSuccess = allClaimedProject => ({
+  type: GET_ALL_CLAIMED_PROJECTS,
+  payload: allClaimedProject,
+});
+
+const getProjectStagesSuccess = allProjectStage => ({
+  type: GET_PROJECT_STAGES,
+  payload: allProjectStage,
+});
+
 export {
   getProjectCatSuccess,
   getCategoryProjectSuccess,
   getProjectDetailSuccess,
+  getAllClaimedProjectSuccess,
+  getProjectStagesSuccess,
 };
