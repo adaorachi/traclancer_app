@@ -5,4 +5,5 @@ const getUserSuccess = userData => ({
   payload: userData,
 });
 
+// eslint-disable-next-line import/prefer-default-export
 export { getUserSuccess };

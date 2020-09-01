@@ -12,7 +12,7 @@ export default function Drawer() {
     3: { icon: <Icon.Calendar color={color} size={size} />, link: '/create_project' },
     4: { icon: <Icon.ShoppingBag color={color} size={size} />, link: '/project_details' },
   };
-  // const exactLink = (listIcons[index].link === '/');
+
   return (
     <div className="nav-drawer-container">
       <ul className="navbar-drawer-links">

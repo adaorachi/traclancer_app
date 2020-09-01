@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import * as Icon from 'react-feather';
 import { Menu, Dropdown } from 'antd';
 import {
@@ -14,35 +14,39 @@ import {
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedOut: false,
-    };
+    this.state = {};
 
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   handleLogOut() {
+    const { history } = this.props;
     const url = 'http://localhost:3001/api/v1/';
     axios.delete(`${url}logout`,
       { withCredentials: true }).then(res => {
-      console.log(res.data.logged_out, this.props);
       if (res.data.logged_out) {
         localStorage.removeItem('token');
-        this.props.history.push('/login');
+        history.push('/login');
       }
     });
   }
 
   render() {
-    const handleCloseDrawer = e => {
+    const handleCloseDrawer = () => {
       document.querySelector('.nav-drawer').classList.toggle('close-d');
       document.querySelector('.main-page').classList.toggle('open-d');
       document.querySelector('.toggle-button').classList.toggle('close-d');
     };
-    let data;
-    if (this.props.userDetails) {
-      const { profile_image, first_name, last_name } = this.props.userDetails;
-      data = (
+
+    const { userDetails, history } = this.props;
+    const authPathRegex = /(\/login)|(\/signup)/i;
+    const currPath = history.location.pathname;
+    let navbar;
+    let userD;
+
+    if (userDetails) {
+      const { profile_image, first_name, last_name } = userDetails;
+      userD = (
         <div>
           <img src={profile_image} className="rounded" width="40" alt="avatar" />
           <span className="mx-2 user-name">{`${first_name} ${last_name}`}</span>
@@ -50,7 +54,7 @@ class Navbar extends Component {
       );
     }
 
-    const menu = (
+    const profileMenu = (
       <Menu>
         <Menu.Item icon={<PieChartOutlined />}>
           Profile
@@ -68,9 +72,6 @@ class Navbar extends Component {
       </Menu>
     );
 
-    const authPathRegex = /(\/login)|(\/signup)/i;
-    const currPath = this.props.history.location.pathname;
-    let navbar;
     if (!authPathRegex.test(currPath)) {
       navbar = (
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -94,17 +95,17 @@ class Navbar extends Component {
           <div className="navbar-collapse d-flex bg-white">
             <ul className="navbar-nav mr-auto flex-row">
               <li className="nav-item">
-                <a className="nav-link" href="/">Features</a>
+                <a className="nav-link" href="/">Projects</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">Pricing</a>
+                <a className="nav-link" href="/">Settings</a>
               </li>
             </ul>
             <span className="navbar-text px-3">
               <div className="avatar">
-                <Dropdown overlay={menu} trigger={['click']}>
+                <Dropdown overlay={profileMenu} trigger={['click']}>
                   <button type="button" className="ant-dropdown-link d-flex align-items-center button-unhighlight" onClick={e => e.preventDefault()}>
-                    {data}
+                    {userD}
                     <Icon.ChevronDown width={12} color="#404e67" />
                   </button>
                 </Dropdown>
@@ -124,5 +125,11 @@ class Navbar extends Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  userDetails: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+
+};
 
 export default withRouter(Navbar);

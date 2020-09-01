@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Form, notification } from 'antd';
 import * as Icon from 'react-feather';
 import { getUserData } from '../../fetchAllData/fetchUserData';
@@ -13,13 +14,9 @@ class Auth extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      signupError: null,
-      userData: null,
-    };
+    this.state = {};
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleReset = this.handleReset.bind(this);
     // this.formRef = this.formRef.bind(this);
   }
 
@@ -27,7 +24,6 @@ class Auth extends Component {
     const { history, location, userData } = this.props;
     if (prevProp.userData !== userData) {
       if (userData.status === 'created' && userData.logged_in) {
-        // this.handleReset();
         notification.success({
           message: (location.pathname === '/login') ? 'Login successfully, redirecting ...' : 'Registration successful, redirecting ...',
           placement: 'topRight',
@@ -37,7 +33,7 @@ class Auth extends Component {
       } else if (userData.status === 401 && !userData.logged_in) {
         notification.error({
           message: userData.error.map(err => (
-            <div>
+            <div key={err}>
               {err}
               .
             </div>
@@ -54,25 +50,17 @@ class Auth extends Component {
   }
 
   handleSubmit(values) {
-    const { location } = this.props;
+    const { location, onGetUserData } = this.props;
     if (location.pathname === '/login') {
       isSignup = false;
     }
-    this.props.onGetUserData(values);
-    this.setState({
-      userData: this.props.userData,
-    });
+    onGetUserData(values);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-
-
   render() {
-    // const formRef = () => React.createRef();
-
     // const handleReset = () => {
-    //   formRef.current.resetFields();
-    // }
+    //   this.formRef.current.resetFields();
+    // };
 
     const { location } = this.props;
     let renderForm;
@@ -122,7 +110,7 @@ class Auth extends Component {
                   {cardHeader}
                 </div>
                 <Form
-                  // ref={this.formRef}
+                  ref={this.formRef}
                   name="auth-form"
                   className="auth-form"
                   initialValues={{
@@ -150,5 +138,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getUserData(userData, isSignup));
   },
 });
+
+Auth.propTypes = {
+  userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  onGetUserData: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
