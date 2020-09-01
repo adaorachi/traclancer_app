@@ -25,15 +25,26 @@
 
   .nav-drawer-container {
     .navbar-drawer-links {
-      padding: 2rem 1.4rem;
+      padding: 2rem 0;
       width: 100%;
     }
 
     .nav-item {
-      &.active .list-name {
-        color: #1dc4e9;
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 0 1.4rem;
+
+      &.active {
+        background: #6274944d;
+
+        .list-name {
+          color: #1dc4e9;
+        }
       }
     }
+
+    // background: #6274944d;
 
     .nav-link {
       display: flex;

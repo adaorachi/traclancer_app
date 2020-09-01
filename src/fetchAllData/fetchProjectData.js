@@ -5,6 +5,7 @@ import {
   getProjectDetailSuccess,
   getAllClaimedProjectSuccess,
   getProjectStagesSuccess,
+  getClaimedProjectStatsSuccess,
 } from '../actions/projectAction';
 
 const url = 'http://localhost:3001/api/v1/';
@@ -81,3 +82,35 @@ export const getProjectStages = id => dispatch => {
     console.log(error);
   });
 };
+
+export const createClaimedProjectStats = obj => {
+  axios.post(`${url}claimed_project_stats`,
+    obj,
+    { withCredentials: true }).then(response => {
+    console.log(response);
+    return response;
+  }).catch(error => {
+    console.log(error);
+  });
+};
+
+export const updateClaimedProjectStats = (obj) => {
+  axios.put(`${url}claimed_project_stats`,
+    obj,
+    { withCredentials: true }).then(response => {
+    console.log(response);
+    return response;
+  }).catch(error => {
+    console.log(error);
+  });
+};
+
+// export const getClaimedProjectStats = projectId => dispatch => {
+//   axios.get(`${url}claimed_project_stats/${projectId}`,
+//     { withCredentials: true }).then(response => {
+//     dispatch(getClaimedProjectStatsSuccess(response.data.data));
+//     console.log(response.data.data);
+//   }).catch(error => {
+//     console.log(error);
+//   });
+// };

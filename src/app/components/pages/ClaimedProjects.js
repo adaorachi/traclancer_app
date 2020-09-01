@@ -7,16 +7,26 @@ import {
 } from 'antd';
 import { ExclamationCircleOutlined, PlayCircleFilled, PauseCircleFilled } from '@ant-design/icons';
 import Timer from 'react-compound-timer';
-import { getAllUserClaimedProject } from '../../../fetchAllData/fetchProjectData';
-import { fullName } from '../../utils/utils';
+import { getAllUserClaimedProject, createClaimedProjectStats } from '../../../fetchAllData/fetchProjectData';
+import RecordClaimedProjectTime from '../../forms/RecordClaimedProjectTime';
 
 export class ClaimedProjects extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      visible: false,
+      confirmLoading: false,
+      mapSelect: [],
+      sentData: false,
+      stageSelect: null,
+    };
 
     this.handlePlayTimer = this.handlePlayTimer.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.handleOk = this.handleOk.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,72 +34,89 @@ export class ClaimedProjects extends Component {
     onGetUserClaimedProject();
   }
 
-  handlePlayTimer(e, action, stages) {
-    const { confirm } = Modal;
+  showModal(mapSelect) {
+    this.setState({
+      visible: true,
+      mapSelect,
+    });
+  }
+
+  handleOk() {
+    this.setState({
+      confirmLoading: true,
+      sentData: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false,
+        confirmLoading: false,
+      });
+    }, 2000);
+  }
+
+  handleCancel() {
+    this.setState({
+      visible: false,
+    });
+  }
+
+  handleSelectChange(value) {
+    this.setState({
+      stageSelect: value,
+    });
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  handlePlayTimer(e, action, stages, id) {
     const key = 'updatable';
-    const mapStages = stages.map(sta => (
-      <Select.Option value={sta.id} key={sta.title}>{sta.title}</Select.Option>
-    ))
-    const content = (
-      <Form.Item
-        name="select"
-        label="Select"
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: 'Please select your country!',
-          },
-        ]}
-      >
-        <Select placeholder="Please select a project stage">
-          {mapStages}
-        </Select>
-      </Form.Item>
-    );
+
+    // var e = document.getElementById("elementId");
+    // var value = e.options[e.selectedIndex].value;
+
     const openMessage = (message1, message2) => {
       message.loading({ content: message1, key });
       setTimeout(() => {
         message.info({ content: message2, key, duration: 2 });
       }, 1000);
     };
-    this.setState({});
-    if (e.target.classList.contains('resume-timer')) {
+    if (e.target.classList.contains(`resume-timer-${id}`)) {
+      const claimedData = e.target.getAttribute('claimed-data');
+      const obj = {
+        claimed_project: parseInt(claimedData, 10),
+        record_time: 0,
+      };
       action();
-      document.querySelector('.resume-timer').style.display = 'none';
-      document.querySelector('.pause-timer').style.display = 'block';
+      document.querySelector(`.resume-timer-${id}`).style.display = 'none';
+      document.querySelector(`.pause-timer-${id}`).style.display = 'block';
       openMessage('Timer starting ...', 'Started!');
-    } else if (e.target.classList.contains('pause-timer')) {
-      // <Button onClick={showPromiseConfirm}>With promise</Button>
-      confirm({
-        title: 'What project stage did you work on?',
-        icon: <ExclamationCircleOutlined />,
-        content,
-        onOk() {
-          return new Promise((resolve, reject) => {
-            setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-            action();
-            document.querySelector('.resume-timer').style.display = 'block';
-            document.querySelector('.pause-timer').style.display = 'none';
-            openMessage('Timer pausing ...', 'Paused!');
-          }).catch(() => console.log('Oops errors!'));
-        },
-        onCancel() { },
-      });
+      // const claimed = createClaimedProjectStats(obj);
+      // if (claimed.hasOwnProperty('data')) {
+
+      // } else {
+      //   openMessage('Error stating timer ...', 'Timer Aborted!');
+      // }
+    } else if (e.target.classList.contains(`pause-timer-${id}`)) {
+      // this.showModal(stages);
+      const mapStages = stages.map(sta => (
+        <Select.Option value={sta.id} key={sta.id}>{sta.title}</Select.Option>
+      ));
+
+      action();
+      document.querySelector(`.resume-timer-${id}`).style.display = 'block';
+      document.querySelector(`.pause-timer-${id}`).style.display = 'none';
+      openMessage('Timer pausing ...', 'Paused!');
     }
   }
 
   render() {
-    const size = 12;
-    const socialIcons = [{ icon: Icon.Mail, link: '/' }, { icon: Icon.Twitter, link: '/' }, { icon: Icon.Linkedin, link: '/' }];
+    let aa;
+    function onChange(value) {
+      aa = value;
+      console.log(`selected ${value}`);
+      return value;
+    }
 
-    const mapSocialIcon = socialIcons.map(iconProp => (
-      <div className="links" key={iconProp.link}>
-        <Link to={iconProp.link} className="social-link">
-          <iconProp.icon color="#fff" size={size} />
-        </Link>
-      </div>
-    ));
+    const { visible, confirmLoading } = this.state;
 
     const content = (
       <div>
@@ -129,6 +156,7 @@ export class ClaimedProjects extends Component {
       const { projects } = proj;
       const { attributes } = proj;
       const { project_stages } = proj;
+
       return (
         <div key={projects.id} className="col-12">
           <div className="card project-card rounded">
@@ -187,10 +215,10 @@ export class ClaimedProjects extends Component {
                           <Timer.Seconds />
                         </span>
                         <div className="timer-button">
-                          <button type="button" className="pause-timer" onClick={e => this.handlePlayTimer(e, pause, project_stages)}>
+                          <button type="button" claimed-data={attributes.id} className={`pause-timer pause-timer-${projects.id}`} onClick={e => this.handlePlayTimer(e, pause, project_stages, projects.id)}>
                             <PauseCircleFilled style={{ fontSize: '2rem' }} />
                           </button>
-                          <button type="button" className="resume-timer" onClick={e => this.handlePlayTimer(e, resume, [])}>
+                          <button type="button" className={`resume-timer resume-timer-${projects.id}`} claimed-data={attributes.id} onClick={e => this.handlePlayTimer(e, resume, [], projects.id)}>
                             <PlayCircleFilled style={{ fontSize: '2rem' }} />
                           </button>
                         </div>
@@ -215,6 +243,21 @@ export class ClaimedProjects extends Component {
               </div>
             </div>
           </div>
+          <Modal
+            title="What project Stage did you work on?"
+            visible={visible}
+            onOk={this.handleOk}
+            confirmLoading={confirmLoading}
+            onCancel={this.handleCancel}
+          >
+            <Select
+              style={{ width: 200 }}
+              defaultValue="Select Stage"
+              onChange={onChange}
+            >
+              {/* {mapStages} */}
+            </Select>
+          </Modal>
         </div>
       );
     });
