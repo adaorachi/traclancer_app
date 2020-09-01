@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { notification } from 'antd';
 import { getCategoryProjectsData, createClaimedProject, updateProjectClaimed } from '../../../fetchAllData/fetchProjectData';
@@ -53,7 +54,6 @@ class AvailableProjects extends Component {
     if (catProjectsData.length > 0) {
       const mappedStructure = catProjectsData[0];
       title = mappedStructure[0].project_category.title;
-      console.log(mappedStructure)
 
       mapCatProjectsData = mappedStructure[1].map(proj => (
         <div key={proj.attributes.id} className="list-group-item flex-column align-items-start">
@@ -135,5 +135,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getCategoryProjectsData(catSlug));
   },
 });
+
+AvailableProjects.propTypes = {
+  userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  catProjectsData: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  onGetCategoryProjectData: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvailableProjects);

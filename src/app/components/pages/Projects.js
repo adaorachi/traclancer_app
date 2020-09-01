@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as Icon from 'react-feather';
 import { getProjectCatData } from '../../../fetchAllData/fetchProjectData';
 import Loader from '../../layouts/Loader';
@@ -78,5 +79,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getProjectCatData());
   },
 });
+
+Projects.propTypes = {
+  projectCatData: PropTypes.objectOf(PropTypes.any).isRequired,
+  onGetProjectCatData: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);

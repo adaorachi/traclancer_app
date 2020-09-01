@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import axios from 'axios';
 import CKEditor from '@ckeditor/ckeditor5-react';
@@ -22,73 +23,58 @@ class CreateProject extends Component {
       textarea: '',
       files: [],
       tags: [],
-    }
+    };
 
     this.handleReset = this.handleReset.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTag = this.handleTag.bind(this);
-  }
-
-  componentDidMount() {
-    // ClassicEditor
-    //   .create(document.querySelector('#project-description'), {
-    //     toolbar: ['Heading', 'bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote', 'Link'],
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    this.formRef = React.createRef();
   }
 
   handleTag(value) {
-  this.setState({
-    tags: value,
-  })
+    this.setState({
+      tags: value,
+    });
   }
 
-  formRef = React.createRef();
-
-  handleReset = () => {
+  handleReset() {
     this.formRef.current.resetFields();
-  };
+  }
 
-  handleFile = e => {
+  handleFile(e) {
     if (Array.isArray(e)) {
       return e;
     }
     this.setState({
-      files: e.fileList
-    })
+      files: e.fileList,
+    });
     return e && e.fileList;
-  };
+  }
 
-  handleSubmit() {   
+  handleSubmit() {
+    const { textarea, files, tags } = this.state;
     const aa = ['title', 'estimated_time', 'budget'];
-    const values = {}
-    aa.forEach((a) => {
-      values[a] = document.getElementById(a).value
-    })
-    values['description'] = this.state.textarea;
-    // values['attachment_url'] = this.state.files;
-    values['attachment_url'] = 'files';
-    values['request_detail'] = document.getElementById('request_detail').getAttribute('aria-checked');
-    values['project_category_id'] = 2;
-    values['owned_user_id'] = 10;
+    const values = {};
+    aa.forEach(a => {
+      values[a] = document.getElementById(a).value;
+    });
+    values.description = textarea;
+    values.attachment_url = files;
+    // values.attachment_url = 'files';
+    values.request_detail = document.getElementById('request_detail').getAttribute('aria-checked');
+    values.project_category_id = 2;
+    values.owned_user_id = 10;
+    values.skill_set = tags;
 
-    // values['skill_set'] = this.state.tags;
-
-    console.log(values)
-  
     const url = 'http://localhost:3001/api/v1/';
     axios.post(`${url}projects`,
-    values,
+      values,
       { withCredentials: true }).then(res => {
-        console.log(res)
-      // this.setState({
-      //   isLoggedOut: res.data.logged_out,
-      // });
+      // eslint-disable-next-line no-console
+      console.log(res);
     });
-  };
+  }
 
   render() {
     return (
@@ -105,7 +91,8 @@ class CreateProject extends Component {
             initialValues={{
               remember: false,
             }}
-            onFinish={this.handleSubmit}>
+            onFinish={this.handleSubmit}
+          >
 
             <Form.Item
               className="card-input"
@@ -127,25 +114,16 @@ class CreateProject extends Component {
             <Form.Item
               className="card-input"
               name="description"
-            // rules={[
-            //   {
-            //     required: true,
-            //     message: 'Please input your Project Description!',
-            //   },
-            // ]}
             >
               <div className="form-group">
                 <label htmlFor="description">Project Description</label>
                 <CKEditor
                   editor={ClassicEditor}
-                  onInit={editor => {
-
-                  }}
                   onChange={(event, editor) => {
                     const data = editor.getData();
                     this.setState({
                       textarea: data,
-                    })
+                    });
                   }}
                 />
 
@@ -187,7 +165,8 @@ class CreateProject extends Component {
                       required: true,
                       message: 'Please input your Project Budget!',
                     },
-                  ]}>
+                  ]}
+                >
 
                   <div className="form-group">
                     <label htmlFor="budget">Project Budget</label>
@@ -238,5 +217,4 @@ class CreateProject extends Component {
   }
 }
 
-export default CreateProject
-
+export default CreateProject;

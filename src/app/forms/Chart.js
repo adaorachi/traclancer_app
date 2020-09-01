@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
@@ -13,7 +14,7 @@ class Chart extends Component {
 
     const data = [];
     let visits = 10;
-    for (let i = 1; i < 366; i++) {
+    for (let i = 1; i < 366; i += 1) {
       visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
       data.push({ date: new Date(2018, 0, i), name: `name${i}`, value: visits });
     }
@@ -48,8 +49,13 @@ class Chart extends Component {
   }
 
   render() {
+    const styles = {
+      width: '100%',
+      height: '500px',
+    };
+
     return (
-      <div id="chartdiv" style={{ width: '100%', height: '500px' }} />
+      <div id="chartdiv" style={styles} />
     );
   }
 }

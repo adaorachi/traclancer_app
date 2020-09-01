@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import {
   getProjectCatSuccess,
@@ -5,7 +6,6 @@ import {
   getProjectDetailSuccess,
   getAllClaimedProjectSuccess,
   getProjectStagesSuccess,
-  getClaimedProjectStatsSuccess,
 } from '../actions/projectAction';
 
 // const url = 'https://enigmatic-retreat-81755.herokuapp.com/api/v1/';
@@ -134,13 +134,3 @@ export const updateClaimedProjectStats = obj => {
     });
   }
 };
-
-// export const getClaimedProjectStats = projectId => dispatch => {
-//   axios.get(`${url}claimed_project_stats/${projectId}`,
-//     { withCredentials: true }).then(response => {
-//     dispatch(getClaimedProjectStatsSuccess(response.data.data));
-//     console.log(response.data.data);
-//   }).catch(error => {
-//     console.log(error);
-//   });
-// };

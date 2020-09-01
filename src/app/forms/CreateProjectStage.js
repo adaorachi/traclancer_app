@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import {
   Form, Input, Button, Space, Switch, InputNumber,
@@ -6,10 +7,15 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 export default function CreateProjectStages() {
   const onFinish = values => {
+    // eslint-disable-next-line no-console
     console.log('Received values of form:', values);
   };
 
   const { TextArea } = Input;
+  const styles = {
+    display: 'flex',
+    marginBottom: '8px',
+  };
 
   return (
     <div className="create-project-form">
@@ -19,7 +25,7 @@ export default function CreateProjectStages() {
             <div className="d-flex flex-wrap justify-content-center">
 
               {fields.map(field => (
-                <Space key={field.key} style={{ display: 'flex', marginBottom: 8 }} align="start">
+                <Space key={field.key} style={styles} align="start">
                   <div className="card project-stage-card">
                     <div className="p-3">
                       <Form.Item
@@ -82,8 +88,6 @@ export default function CreateProjectStages() {
                   Add Project stage
                 </Button>
               </Form.Item>
-
-              
 
             </div>
           )}

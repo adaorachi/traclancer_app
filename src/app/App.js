@@ -1,49 +1,21 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable import/named */
 import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter, Route, Switch, Redirect,
 } from 'react-router-dom';
-import { notification } from 'antd';
 import PropTypes from 'prop-types';
 import Loader from './layouts/Loader';
 import Navbar from './layouts/Navbar';
 import Drawer from './layouts/Drawer';
 import { authRoutes, authorizedRoutes } from '../config/Routes';
 import ScrollTop from './ScrollTop';
-import 'reset-css';
-import '../assets/scss/style.scss';
-
-import Dashboard from './components/pages/Dashboard';
-import Auth from './auth/Auth';
-import Projects from './components/pages/Projects';
-import AvailableProjects from './components/single_components/AvailableProjects';
-import ProjectDetail from './components/single_components/ProjectDetail';
-import CreateProject from './forms/CreateProject';
-import ClaimedProjects from './components/pages/ClaimedProjects';
-import ProjectStages from './components/single_components/ProjectStages';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isLoggedIn: null,
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  componentDidUpdate(prevState) {
-    const { userData, history } = this.props.userData;
-
-    // console.log(userData.logged_in, this.props.userData.logged_in, 'data1');
-    // if (userData.logged_in !== this.props.userData.logged_in && this.props.userData.logged_in) {
-    //   this.setState({
-    //     isLoggedIn: this.props.userData.logged_in,
-    //   });
-    // }
+    this.state = {};
   }
 
   render() {
@@ -58,28 +30,22 @@ class App extends Component {
       />
     ) : (null)));
 
-    const { isLoggedIn } = this.state;
     const { userData, history } = this.props;
 
-    const token = localStorage.getItem('token');
     const authPathRegex = /(\/login)|(\/signup)/i;
     const currPath = history.location.pathname;
-    const isAuthed = token && authPathRegex.test(currPath);
+    // const token = localStorage.getItem('token');
+    // const isAuthed = token && authPathRegex.test(currPath);
 
-    let nav;
-    console.log(userData.logged_in);
-
+    // eslint-disable-next-line consistent-return
     const renderRedirect = () => {
       if (localStorage.getItem('token') === null) {
-        // history.push('/login');
         return <Redirect to="/login" />;
       }
       if (localStorage.getItem('token') === null && !authPathRegex.test(currPath)) {
-        // history.push(currPath);
         return <Redirect to={currPath} />;
       }
       if (localStorage.getItem('token') !== null && authPathRegex.test(currPath)) {
-        // history.push('/login');
         return <Redirect to="/" />;
       }
     };
@@ -93,8 +59,6 @@ class App extends Component {
               <Navbar userDetails={userData.user} />
               <Switch>
                 {mapRoutes(authRoutes)}
-                {/* <Route exact path="/login" component={Auth} />
-                <Route exact path="/signup" component={Auth} /> */}
               </Switch>
               <Switch>
                 <div className="wrapper-container">
@@ -104,9 +68,6 @@ class App extends Component {
                       <Drawer />
                     </div>
                     <div className="main-page">
-                      {/* <Route exact path="/" component={Dashboard} />
-                      <Route exact path="/create_project" component={CreateProject} /> */}
-
                       {mapRoutes(authorizedRoutes)}
                     </div>
                   </main>
@@ -122,6 +83,7 @@ class App extends Component {
 
 App.propTypes = {
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = state => ({

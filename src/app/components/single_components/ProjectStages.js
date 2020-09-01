@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Modal, Button, Form, Input, Checkbox, InputNumber,
 } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import CreateProjectStage from '../../forms/CreateProjectStage';
 import { getProjectStages, createProjectStage } from '../../../fetchAllData/fetchProjectData';
 
 class ProjectStages extends Component {
@@ -14,7 +14,6 @@ class ProjectStages extends Component {
     this.state = {
       loading: false,
       visible: false,
-      data: {},
     };
     this.showModal = this.showModal.bind(this);
     this.handleOk = this.handleOk.bind(this);
@@ -53,10 +52,10 @@ class ProjectStages extends Component {
       obj.share = values.share === undefined ? false : values.share;
       obj.claimed_project_id = id;
       createProjectStage(obj);
-      console.log('Success:', obj);
     };
 
     const onFinishFailed = errorInfo => {
+      // eslint-disable-next-line no-console
       console.log('Failed:', errorInfo);
     };
 
@@ -169,5 +168,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getProjectStages(id));
   },
 });
+
+ProjectStages.propTypes = {
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  onGetProjectStages: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectStages);

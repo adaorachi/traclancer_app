@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import sanitizeHtml from 'sanitize-html';
+import PropTypes from 'prop-types';
 import renderHTML from 'react-render-html';
 import { getProjectDetail } from '../../../fetchAllData/fetchProjectData';
 
@@ -20,11 +21,9 @@ class ProjectDetail extends Component {
   render() {
     const { projectDetailData } = this.props;
     let mapProjectDetailsData;
-    let title;
     if (projectDetailData.length > 0) {
       const { project } = projectDetailData[0][0];
       const { owned_user } = projectDetailData[0][1];
-      console.log(project);
       mapProjectDetailsData = (
         <div className="card">
           <div className="card-header bg-info text-white">
@@ -112,5 +111,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getProjectDetail(catSlug));
   },
 });
+
+ProjectDetail.propTypes = {
+  projectDetailData: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  onGetProjectDetailData: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectDetail);

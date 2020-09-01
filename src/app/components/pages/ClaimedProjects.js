@@ -10,7 +10,7 @@ import Timer from 'react-compound-timer';
 import { getAllUserClaimedProject, createClaimedProjectStats } from '../../../fetchAllData/fetchProjectData';
 import RecordClaimedProjectTime from '../../forms/RecordClaimedProjectTime';
 
-export class ClaimedProjects extends Component {
+class ClaimedProjects extends Component {
   constructor(props) {
     super(props);
 
