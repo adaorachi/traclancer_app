@@ -57,15 +57,18 @@ const Dashboard = props => {
       </div>
     </div>
   ));
+
+  const userName = userData.logged_in ? userData.user.username : '';
+
   return (
     <div className="dashboard-container page-container">
       <div className="header-content p-3">
         <h4>
           Good Day
           {' '}
-          {userData.user.username}
+          {userName}
         </h4>
-        <span>Your Stats for today!</span>
+        <span>Your stats for today!</span>
       </div>
       <div className="dashboard-main">
         <div className="statistic">
@@ -85,7 +88,7 @@ const Dashboard = props => {
 };
 
 Dashboard.propTypes = {
-  userData: PropTypes.objectOf(PropTypes.object).isRequired,
+  userData: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = state => ({

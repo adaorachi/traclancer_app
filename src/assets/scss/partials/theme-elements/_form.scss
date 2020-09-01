@@ -3,15 +3,17 @@
   padding: 2rem;
   background: #fff;
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+
   &.width-form {
     width: 70%;
-   }
+  }
 
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     &.width-form {
       width: 100%;
     }
   }
+
   .ant-switch {
     width: 20px;
   }
@@ -26,6 +28,6 @@
   max-height: 400px !important;
 
   &.ck-focused {
-    border: 1px solid #40a9ff!important;
+    border: 1px solid #40a9ff !important;
   }
 }

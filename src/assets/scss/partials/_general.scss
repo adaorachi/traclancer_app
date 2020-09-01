@@ -67,11 +67,10 @@ strong {
 }
 
 .text-muted {
-  // font-size: 1.1rem;
   margin-bottom: 0.2rem;
   color: $secondary-color;
 
-  form-link {
+  .form-link {
     &:hover {
       color: $primary-color;
     }

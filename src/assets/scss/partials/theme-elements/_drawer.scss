@@ -17,7 +17,6 @@
 
   @media screen and (max-width: 789px) {
     & {
-      // left: -220px;
       top: 0;
       z-index: 9999;
     }
@@ -35,6 +34,10 @@
       display: block;
       padding: 0 1.4rem;
 
+      .list-name {
+        margin-left: 0.6rem;
+      }
+
       &.active {
         background: #6274944d;
 
@@ -44,8 +47,6 @@
       }
     }
 
-    // background: #6274944d;
-
     .nav-link {
       display: flex;
       align-items: center;
@@ -54,10 +55,6 @@
 
       .list-icon {
         display: flex;
-      }
-
-      .list-name {
-        margin-left: 0.6rem;
       }
     }
   }

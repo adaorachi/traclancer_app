@@ -73,8 +73,11 @@
 }
 
 .project-card {
-  box-shadow: 0 0.46875rem 2.1875rem rgba(0, 0, 0, 0.03), 0 0.9375rem 1.40625rem rgba(0, 0, 0, 0.03),
-    0 0.25rem 0.53125rem rgba(0, 0, 0, 0.05), 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 0.46875rem 2.1875rem rgba(0, 0, 0, 0.03),
+    0 0.9375rem 1.40625rem rgba(0, 0, 0, 0.03),
+    0 0.25rem 0.53125rem rgba(0, 0, 0, 0.05),
+    0 0.125rem 0.1875rem rgba(0, 0, 0, 0.03);
 }
 
 .project-details-page-container {
@@ -103,10 +106,6 @@
     border-top: 1px solid rgb(241, 241, 241);
   }
 
-  .ant-progress-inner {
-    // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-  }
-
   .ant-progress-outer {
     margin: 0 !important;
     padding: 0 !important;
@@ -115,7 +114,6 @@
   .ant-progress-line {
     display: flex !important;
     align-items: center;
-    // flex-direction: column;
   }
 
   .ant-progress-text {
@@ -124,7 +122,7 @@
   }
 
   .pause-timer,
-  .resume-timer { 
+  .resume-timer {
     cursor: pointer;
     transition: all 650ms;
 
@@ -144,19 +142,15 @@
     pointer-events: none;
   }
 
-  .pause-timer {
-    display: none;
-  }
-
   .timer-button {
+    .pause-timer {
+      display: none;
+    }
+
     button {
       background: transparent;
       border: none;
       outline: none;
     }
   }
-
-  // .time-content {
-  //   font-size: 1rem;
-  // }
 }

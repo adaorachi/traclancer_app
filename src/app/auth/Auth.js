@@ -33,9 +33,7 @@ class Auth extends Component {
           placement: 'topRight',
         });
 
-        setTimeout(() => {
-          history.push('/');
-        }, 10);
+        history.push('/');
       } else if (userData.status === 401 && !userData.logged_in) {
         notification.error({
           message: userData.error.map(err => (

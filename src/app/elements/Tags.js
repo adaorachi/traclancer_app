@@ -1,54 +1,56 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Tag, Input, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
-
 class Tags extends Component {
-  state = {
-    tags: [],
-    inputVisible: false,
-    inputValue: '',
-    editInputIndex: -1,
-    editInputValue: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      tags: [],
+      inputVisible: false,
+      inputValue: '',
+      editInputIndex: -1,
+      editInputValue: '',
+    };
+  }
 
-  handleClose = removedTag => {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
-    this.getTag(tags)
-    this.setState({ tags });
-  };
-
-  showInput = () => {
-    this.setState({ inputVisible: true }, () => this.input.focus());
-  };
-
-  handleInputChange = e => {
-    this.setState({ inputValue: e.target.value });
-  };
-
-  getTag = (val) => {
+  getTag(val) {
     this.props.handleTag(val);
   }
 
-  handleInputConfirm = () => {
+  handleInputChange(e) {
+    this.setState({ inputValue: e.target.value });
+  }
+
+  showInput() {
+    this.setState({ inputVisible: true }, () => this.input.focus());
+  }
+
+  handleClose(removedTag) {
+    const tags = this.state.tags.filter(tag => tag !== removedTag);
+    this.getTag(tags);
+    this.setState({ tags });
+  }
+
+  handleInputConfirm() {
     const { inputValue } = this.state;
     let { tags } = this.state;
     if (inputValue && tags.indexOf(inputValue) === -1) {
       tags = [...tags, inputValue];
     }
-    this.getTag(tags)
+    this.getTag(tags);
     this.setState({
       tags,
       inputVisible: false,
       inputValue: '',
     });
-  };
+  }
 
-  handleEditInputChange = e => {
+  handleEditInputChange(e) {
     this.setState({ editInputValue: e.target.value });
-  };
+  }
 
-  handleEditInputConfirm = () => {
+  handleEditInputConfirm() {
     this.setState(({ tags, editInputIndex, editInputValue }) => {
       const newTags = [...tags];
       newTags[editInputIndex] = editInputValue;
@@ -59,18 +61,20 @@ class Tags extends Component {
         editInputValue: '',
       };
     });
-  };
+  }
 
-  saveInputRef = input => {
+  saveInputRef(input) {
     this.input = input;
-  };
+  }
 
-  saveEditInputRef = input => {
+  saveEditInputRef(input) {
     this.editInput = input;
-  };
+  }
 
   render() {
-    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = this.state;
+    const {
+      tags, inputVisible, inputValue, editInputIndex, editInputValue,
+    } = this.state;
     return (
       <>
         {tags.map((tag, index) => {
@@ -117,8 +121,8 @@ class Tags extends Component {
               {tagElem}
             </Tooltip>
           ) : (
-              tagElem
-            );
+            tagElem
+          );
         })}
         {inputVisible && (
           <Input
@@ -134,7 +138,9 @@ class Tags extends Component {
         )}
         {!inputVisible && (
           <Tag className="site-tag-plus" onClick={this.showInput}>
-            <PlusOutlined /> Add Skill
+            <PlusOutlined />
+            {' '}
+            Add Skill
           </Tag>
         )}
       </>

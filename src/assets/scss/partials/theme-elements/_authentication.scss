@@ -6,11 +6,13 @@
   overflow: hidden;
   min-width: 100%;
   min-height: 100vh;
+
   a,
   p > a {
     color: $theme-heading-color;
     font-weight: 600;
   }
+
   .btn-auth-gen {
     .btn-icon {
       width: 140px;
@@ -25,9 +27,11 @@
       }
     }
   }
+
   .input-group {
     background: transparent;
   }
+
   .card {
     margin-bottom: 0;
   }
@@ -41,14 +45,17 @@
     width: 390px;
     padding: 15px;
     z-index: 5;
+
     &.multyform,
     &.subscribe {
       width: 750px;
     }
   }
+
   @media only screen and (max-width: 768px) {
     max-width: 360px;
   }
+
   @media only screen and (max-width: 575px) {
     .card {
       .card-body {
@@ -59,7 +66,8 @@
 
   .auth-icon {
     font-size: 30px;
-    &:before {
+
+    &::before {
       background: $theme-color;
       background-clip: inherit;
       -webkit-background-clip: text;
@@ -70,7 +78,7 @@
   &.offline {
     background-image: none;
 
-    &:before {
+    &::before {
       display: none;
     }
   }
@@ -97,6 +105,7 @@
       &.s {
         width: 20px;
         height: 20px;
+
         &:nth-child(2) {
           top: 150px;
           right: -150px;
@@ -121,17 +130,18 @@
   }
 }
 
-
 .aut-bg-img {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .aut-bg-img-side {
   p {
     line-height: 2;
   }
 }
+
 .aut-bg-img,
 .aut-bg-img-side {
   .custom-select,
@@ -139,20 +149,17 @@
     background: transparent;
   }
 }
+
 .auth-tabs {
-  .card {
-    // border-right: 10px;
-  }
-  .nav-pills {
-    // margin-top: -80px;
-  }
   .tab-content {
     overflow: hidden;
     position: relative;
+
     .tab-pane > * {
       position: relative;
       z-index: 5;
     }
+
     .auth-icon {
       position: absolute;
       bottom: 0;
@@ -164,6 +171,7 @@
     }
   }
 }
+
 /* image varient start */
 @keyframes floating {
   from {

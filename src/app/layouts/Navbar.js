@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import * as Icon from 'react-feather';
 import { Menu, Dropdown } from 'antd';
@@ -25,24 +25,30 @@ class Navbar extends Component {
     const url = 'http://localhost:3001/api/v1/';
     axios.delete(`${url}logout`,
       { withCredentials: true }).then(res => {
-      this.setState({
-        isLoggedOut: res.data.logged_out,
-      });
+      console.log(res.data.logged_out, this.props);
+      if (res.data.logged_out) {
+        localStorage.removeItem('token');
+        this.props.history.push('/login');
+      }
     });
-    
   }
 
   render() {
-    // if (this.state.isLoggedOut) {
-    //   this.props.history.push('/login');
-    // }
     const handleCloseDrawer = e => {
       document.querySelector('.nav-drawer').classList.toggle('close-d');
       document.querySelector('.main-page').classList.toggle('open-d');
       document.querySelector('.toggle-button').classList.toggle('close-d');
     };
-
-    const { profile_image, first_name, last_name } = this.props.userDetails;
+    let data;
+    if (this.props.userDetails) {
+      const { profile_image, first_name, last_name } = this.props.userDetails;
+      data = (
+        <div>
+          <img src={profile_image} className="rounded" width="40" alt="avatar" />
+          <span className="mx-2 user-name">{`${first_name} ${last_name}`}</span>
+        </div>
+      );
+    }
 
     const menu = (
       <Menu>
@@ -62,8 +68,11 @@ class Navbar extends Component {
       </Menu>
     );
 
-    return (
-      <div className="navbar-wrapper">
+    const authPathRegex = /(\/login)|(\/signup)/i;
+    const currPath = this.props.history.location.pathname;
+    let navbar;
+    if (!authPathRegex.test(currPath)) {
+      navbar = (
         <nav className="navbar navbar-expand-lg navbar-light">
           <a className="navbar-brand" href="/">
             <div className="navbar-brand-image">
@@ -95,10 +104,7 @@ class Navbar extends Component {
               <div className="avatar">
                 <Dropdown overlay={menu} trigger={['click']}>
                   <button type="button" className="ant-dropdown-link d-flex align-items-center button-unhighlight" onClick={e => e.preventDefault()}>
-                    <div>
-                      <img src={profile_image} className="rounded" width="40" alt="avatar" />
-                      <span className="mx-2 user-name">{`${first_name} ${last_name}`}</span>
-                    </div>
+                    {data}
                     <Icon.ChevronDown width={12} color="#404e67" />
                   </button>
                 </Dropdown>
@@ -106,9 +112,17 @@ class Navbar extends Component {
             </span>
           </div>
         </nav>
+      );
+    } else {
+      navbar = '';
+    }
+
+    return (
+      <div className="navbar-wrapper">
+        {navbar}
       </div>
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

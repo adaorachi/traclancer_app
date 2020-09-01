@@ -167,25 +167,25 @@ export class ClaimedProjects extends Component {
             </Popover>
 
             <div className="card-header border-bottom py-2 px-3 text-left">
-              <h6 className="m-0">Web Design of my website</h6>
+              <h5 className="m-0">Web Design of my website</h5>
               <span>Client: MaryAnn Chuka</span>
             </div>
             <div className="card-body py-2 px-3">
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex">
+              <div className="d-flex justify-content-between align-items-center flex-column flex-md-row">
+                <div className="d-flex p-2 p-md-0 order-3 order-md-1">
                   <div className="text-center">
-                    <button type="button" className="button-blue">
+                    <button type="button" className="button-info">
                       <Link to="/" className="text-white">View Project</Link>
                     </button>
                   </div>
                   <div className="text-center">
-                    <button type="button" className="button-blue">
+                    <button type="button" className="button-primary">
                       <Link to={`/claimed_projects/${attributes.id}`} className="text-white">View Stages</Link>
                     </button>
                   </div>
                 </div>
 
-                <div className="estimated-time time-content d-flex flex-column">
+                <div className="estimated-time time-content d-flex flex-column p-2 p-md-0 order-2 order-md-2">
                   <span>Allocated Time: 20:00:00</span>
                   <span>
                     Spent Time: 04:30:00
@@ -195,7 +195,7 @@ export class ClaimedProjects extends Component {
                     </Dropdown>
                   </span>
                 </div>
-                <div>
+                <div className="p-2 p-md-0 order-1 order-md-3">
                   <Timer
                     initialTime={1000}
                     startImmediately={false}
@@ -292,8 +292,8 @@ export class ClaimedProjects extends Component {
             </div>
           </div>
 
-          <div className="card rounded">
-            <div className="card-body card-container">
+          <div className="card m-0 rounded">
+            <div className="card-body card-container p-0">
               <Tabs type="card" defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="OnGoing Projects" key="1">
                   {mapClaimedProjectData}
