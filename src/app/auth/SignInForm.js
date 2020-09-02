@@ -48,10 +48,12 @@ export default function SignInForm() {
       <div className="other-links">
         <p className="mb-0 text-muted">
           Forgot password?
+          {' '}
           <NavLink to="/reset_password" className="form-link">Reset</NavLink>
         </p>
         <p className="mb-0 text-muted">
           Don’t have an account?
+          {' '}
           <NavLink to="/signup" className="form-link">Signup</NavLink>
         </p>
       </div>

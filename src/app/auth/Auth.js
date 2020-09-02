@@ -87,6 +87,7 @@ class Auth extends Component {
           <div className="other-links">
             <p className="mb-0 text-muted">
               Already have an account?
+              {' '}
               <NavLink to="/login" className="form-link">Login</NavLink>
             </p>
           </div>

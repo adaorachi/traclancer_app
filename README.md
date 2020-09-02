@@ -126,6 +126,7 @@ your@pc:~$ npm test src/tests/<testfile>
 ## Future Features
 
 - Build Chatting system for users.
+- Build a more secured authentication system
 
 ## Learn More
 

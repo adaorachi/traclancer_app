@@ -115,7 +115,6 @@ export const createClaimedProjectStats = obj => {
       obj,
       { headers }).then(response => {
       console.log(response);
-      return response;
     }).catch(error => {
       console.log(error);
     });
@@ -124,11 +123,10 @@ export const createClaimedProjectStats = obj => {
 
 export const updateClaimedProjectStats = obj => {
   if (token) {
-    axios.put(`${url}claimed_project_stats`,
+    axios.patch(`${url}claimed_project_stats/1`,
       obj,
       { headers }).then(response => {
       console.log(response);
-      return response;
     }).catch(error => {
       console.log(error);
     });

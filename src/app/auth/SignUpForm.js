@@ -1,6 +1,8 @@
 /* eslint-disable prefer-promise-reject-errors */
 import React from 'react';
-import { Form, Input, Checkbox } from 'antd';
+import {
+  Form, Input, Checkbox, Select,
+} from 'antd';
 
 export default function SignUpForm() {
   return (
@@ -62,6 +64,22 @@ export default function SignUpForm() {
         ]}
       >
         <Input placeholder="Username" />
+      </Form.Item>
+
+      <Form.Item
+        name="status"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Select
+          placeholder="Type of user"
+        >
+          <Select.Option value="0">Freelancer</Select.Option>
+          <Select.Option value="1">Client</Select.Option>
+        </Select>
       </Form.Item>
 
       <Form.Item
