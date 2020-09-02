@@ -42,7 +42,9 @@ A time-tracking application API built with with the React and Redux frameworks c
 * Project form Page
 * Claimed Project Lists Page
 
-<img src="src/assets/images/screenshot.png"/>
+<img src="src/assets/screenshots/shot1.png"/><br />
+<img src="src/assets/screenshots/shot2.png"/><br />
+<img src="src/assets/screenshots/shot3.png"/><br />
 <!-- BUILT WITH -->
 
 # Built With

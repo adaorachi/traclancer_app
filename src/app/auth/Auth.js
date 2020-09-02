@@ -54,6 +54,7 @@ class Auth extends Component {
     if (location.pathname === '/login') {
       isSignup = false;
     }
+    // console.log(values);
     onGetUserData(values);
   }
 
@@ -96,32 +97,30 @@ class Auth extends Component {
     }
 
     return (
-      <div>
-        <div className="auth-wrapper">
-          <div className="auth-content">
-            <div className="auth-bg">
-              <span className="r" />
-              <span className="r s" />
-              <span className="r s" />
-              <span className="r" />
-            </div>
-            <div className="card">
-              <div className="card-body">
-                <div className="card-header">
-                  {cardHeader}
-                </div>
-                <Form
-                  ref={this.formRef}
-                  name="auth-form"
-                  className="auth-form"
-                  initialValues={{
-                    remember: false,
-                  }}
-                  onFinish={this.handleSubmit}
-                >
-                  {renderForm}
-                </Form>
+      <div className="auth-wrapper">
+        <div className="auth-content">
+          <div className="auth-bg">
+            <span className="r" />
+            <span className="r s" />
+            <span className="r s" />
+            <span className="r" />
+          </div>
+          <div className="card">
+            <div className="card-body">
+              <div className="card-header">
+                {cardHeader}
               </div>
+              <Form
+                ref={this.formRef}
+                name="auth-form"
+                className="auth-form"
+                initialValues={{
+                  remember: false,
+                }}
+                onFinish={this.handleSubmit}
+              >
+                {renderForm}
+              </Form>
             </div>
           </div>
         </div>

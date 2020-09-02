@@ -77,8 +77,8 @@ export default function SignUpForm() {
         <Select
           placeholder="Type of user"
         >
-          <Select.Option value="0">Freelancer</Select.Option>
-          <Select.Option value="1">Client</Select.Option>
+          <Select.Option value="freelancer">Freelancer</Select.Option>
+          <Select.Option value="client">Client</Select.Option>
         </Select>
       </Form.Item>
 
