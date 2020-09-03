@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tag, Input, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -15,7 +16,8 @@ class Tags extends Component {
   }
 
   getTag(val) {
-    this.props.handleTag(val);
+    const { handleTag } = this.props;
+    handleTag(val);
   }
 
   handleInputChange(e) {
@@ -27,7 +29,8 @@ class Tags extends Component {
   }
 
   handleClose(removedTag) {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
+    let { tags } = this.state;
+    tags = tags.filter(tag => tag !== removedTag);
     this.getTag(tags);
     this.setState({ tags });
   }
@@ -147,5 +150,9 @@ class Tags extends Component {
     );
   }
 }
+
+Tags.propTypes = {
+  handleTag: PropTypes.func.isRequired,
+};
 
 export default Tags;
