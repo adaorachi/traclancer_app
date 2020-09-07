@@ -1,4 +1,5 @@
-/* eslint-disable import/named */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable consistent-return */
 import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -25,7 +26,6 @@ class App extends Component {
         path={route.path}
         exact={route.exact}
         name={route.name}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         render={props => (<route.component {...props} />)}
       />
     ) : (null)));
@@ -33,13 +33,9 @@ class App extends Component {
     const { userData, history } = this.props;
     let userD = {};
     if (userData.logged_in) userD = userData.user;
-
     const authPathRegex = /(\/login)|(\/signup)/i;
     const currPath = history.location.pathname;
-    // const token = localStorage.getItem('token');
-    // const isAuthed = token && authPathRegex.test(currPath);
 
-    // eslint-disable-next-line consistent-return
     const renderRedirect = () => {
       if (localStorage.getItem('token') === null) {
         return <Redirect to="/login" />;
@@ -63,7 +59,7 @@ class App extends Component {
                 <main className="main-container">
                   <Navbar userDetails={userD} />
                   <div className="nav-drawer">
-                    <Drawer />
+                    <Drawer userStatus={userD} />
                   </div>
                   <div className="main-page">
                     {mapRoutes(authorizedRoutes)}

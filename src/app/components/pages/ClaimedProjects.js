@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Progress, Popover, message, Menu, Dropdown, Tabs, Modal, Select,
+  Progress, Popover, message, Menu, Dropdown, Tabs,
 } from 'antd';
-import { PlayCircleFilled, PauseCircleFilled, ExclamationCircleOutlined } from '@ant-design/icons';
+import { PlayCircleFilled, PauseCircleFilled } from '@ant-design/icons';
 import Timer from 'react-compound-timer';
 import {
   getAllUserClaimedProject,
@@ -29,11 +29,7 @@ class ClaimedProjects extends Component {
 
   render() {
     let stageSelect;
-    function handleChange(value) {
-      stageSelect = value;
-    }
     const handlePlayTimer = (e, action, stages, id) => {
-      const { confirm } = Modal;
       const key = 'updatable';
       const openMessage = (message1, message2) => {
         message.loading({ content: message1, key });
@@ -49,12 +45,6 @@ class ClaimedProjects extends Component {
         openMessage(msg1, msg2);
       };
 
-      const options = stages.map(stage => (
-        <Select.Option key={stage.id} value={stage.id}>
-          {stage.title}
-        </Select.Option>
-      ));
-
       if (e.target.classList.contains(`resume-timer-${id}`)) {
         const claimedData = e.target.getAttribute('claimed-data');
         const obj = {
@@ -64,29 +54,16 @@ class ClaimedProjects extends Component {
         createClaimedProjectStats(obj);
         toggleButton('none', 'block', 'Timer starting ...', 'Started!');
       } else if (e.target.classList.contains(`pause-timer-${id}`)) {
-        confirm({
-          title: 'What project stage did you work on?',
-          icon: <ExclamationCircleOutlined />,
-          content: (
-            <Select defaultValue="select" onChange={handleChange}>
-              {options}
-            </Select>),
-          onOk() {
-            const time = document.getElementById(`time-content-${id}`).textContent;
-            const spentTime = document.getElementById(`spent-time-${id}`);
-            spentTime.textContent = time;
-            const obj = {
-              project_stage: parseInt(stageSelect, 10),
-              claimed_project_id: parseInt(id, 10),
-              record_time: timeConvertToSec(time),
-            };
-            updateClaimedProjectStats(obj);
-            toggleButton('block', 'none', 'Timer pausing ...', 'Paused!');
-          },
-          onCancel() {
-            // console.log('Cancel');
-          },
-        });
+        const time = document.getElementById(`time-content-${id}`).textContent;
+        const spentTime = document.getElementById(`spent-time-${id}`);
+        spentTime.textContent = time;
+        const obj = {
+          project_stage: parseInt(stageSelect, 10),
+          claimed_project_id: parseInt(id, 10),
+          record_time: timeConvertToSec(time),
+        };
+        updateClaimedProjectStats(obj);
+        toggleButton('block', 'none', 'Timer pausing ...', 'Paused!');
       }
     };
 
