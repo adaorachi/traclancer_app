@@ -2,8 +2,7 @@
 import axios from 'axios';
 import { getUserSuccess } from '../actions/userAction';
 
-// const url = 'https://enigmatic-retreat-81755.herokuapp.com/api/v1/';
-const url = 'http://localhost:3001/api/v1/';
+const url = 'https://ancient-ocean-05868.herokuapp.com/api/v1/';
 export const getUserData = (userData, isSignUp = true) => {
   const endPoint = (isSignUp) ? `${url}registrations` : `${url}login`;
   return dispatch => axios
@@ -13,7 +12,6 @@ export const getUserData = (userData, isSignUp = true) => {
       dispatch(getUserSuccess(response.data));
       localStorage.setItem('token', response.data.jwt);
     }).catch(error => {
-      // console.log(error);
     });
 };
 
@@ -29,7 +27,6 @@ export const isUserLoggedIn = () => dispatch => {
         { headers }).then(response => {
         dispatch(getUserSuccess(response.data));
       }).catch(error => {
-        // console.log(error);
       });
   }
 };

@@ -8,8 +8,7 @@ import {
   getProjectStagesSuccess,
 } from '../actions/projectAction';
 
-// const url = 'https://enigmatic-retreat-81755.herokuapp.com/api/v1/';
-const url = 'http://localhost:3001/api/v1/';
+const url = 'https://ancient-ocean-05868.herokuapp.com/api/v1/';
 const token = localStorage.getItem('token');
 const headers = {
   Authorization: `Bearer ${token}`,
