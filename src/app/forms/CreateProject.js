@@ -13,7 +13,7 @@ import {
   Upload,
 } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import Tags from '../elements/Tags';
+// import Tags from '../elements/Tags';
 
 class CreateProject extends Component {
   constructor(props) {
@@ -130,7 +130,7 @@ class CreateProject extends Component {
               </div>
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               className="card-input"
               name="skill_set"
             >
@@ -138,7 +138,7 @@ class CreateProject extends Component {
               <div className="form-group">
                 <Tags handleTag={this.handleTag} />
               </div>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item>
               <div className="form-group">

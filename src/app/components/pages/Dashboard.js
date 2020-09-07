@@ -62,15 +62,15 @@ const Dashboard = props => {
 
   return (
     <div className="dashboard-container page-container">
-      <div className="header-content p-3">
-        <h4>
+      <section className="header-content p-3">
+        <h1>
           Good Day
           {' '}
           {userName}
-        </h4>
+        </h1>
         <span>Your stats for today!</span>
-      </div>
-      <div className="dashboard-main">
+      </section>
+      <section className="dashboard-main">
         <div className="statistic">
           <div className="statistic-cards mt-4">
             <div className="row">
@@ -82,7 +82,7 @@ const Dashboard = props => {
             <Chart />
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

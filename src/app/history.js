@@ -1,4 +1,4 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import createHashHistory from 'history/createBrowserHistory';
+const createHashHistory = require('history').createBrowserHistory;
 
 export default createHashHistory();

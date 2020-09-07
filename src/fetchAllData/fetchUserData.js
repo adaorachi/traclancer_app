@@ -2,8 +2,8 @@
 import axios from 'axios';
 import { getUserSuccess } from '../actions/userAction';
 
-const url = 'https://enigmatic-retreat-81755.herokuapp.com/api/v1/';
-// const url = 'http://localhost:3001/api/v1/';
+// const url = 'https://enigmatic-retreat-81755.herokuapp.com/api/v1/';
+const url = 'http://localhost:3001/api/v1/';
 export const getUserData = (userData, isSignUp = true) => {
   const endPoint = (isSignUp) ? `${url}registrations` : `${url}login`;
   return dispatch => axios

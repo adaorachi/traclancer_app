@@ -49,30 +49,31 @@ class AvailableProjects extends Component {
 
   render() {
     const { catProjectsData } = this.props;
-    let mapCatProjectsData;
+    let mapCatProjectsData = '';
     let title;
+
     if (catProjectsData.length > 0) {
       const mappedStructure = catProjectsData[0];
-      title = mappedStructure[0].project_category.title;
+      title = mappedStructure.title;
 
-      mapCatProjectsData = mappedStructure[1].map(proj => (
-        <div key={proj.attributes.id} className="list-group-item flex-column align-items-start">
+      mapCatProjectsData = mappedStructure.projects.map(proj => (
+        <div key={proj.id} className="list-group-item flex-column align-items-start">
           <div className="d-flex flex-column flex-md-row w-100 justify-content-between align-items-center mb-2">
-            <Link to={`/projects/${proj.attributes.id}`}>
-              <h5 className="lead heading-title">{proj.attributes.title}</h5>
+            <Link to={`/projects/${proj.id}`}>
+              <h5 className="lead heading-title">{proj.title}</h5>
             </Link>
             <span className="budget lead">
               $
-              {proj.attributes.budget}
+              {proj.budget}
             </span>
             <small>
-              <Moment fromNow ago>{proj.attributes.created_at}</Moment>
+              <Moment fromNow ago>{proj.created_at}</Moment>
               {' '}
               ago
             </small>
           </div>
           <p className="mb-1">
-            {shortenedWord(proj.attributes.description, 250)}
+            {shortenedWord(proj.description, 250)}
           </p>
           <div className="footer">
             <div className="row flex-column flex-md-row">
@@ -88,7 +89,7 @@ class AvailableProjects extends Component {
                 </div>
               </div>
               <div className="col-12 col-md-6 text-left text-md-right mt-2 mt-md-0">
-                <button type="button" className="btn button-info btn-sm" id={proj.attributes.id} onClick={this.handleClaimed}>Claim</button>
+                <button type="button" className="btn button-info btn-sm" id={proj.id} onClick={this.handleClaimed}>Claim</button>
               </div>
             </div>
           </div>
@@ -97,14 +98,14 @@ class AvailableProjects extends Component {
     }
 
     return (
-      <div className="available-project-container page-container">
+      <section className="available-project-container page-container">
         <div className="row">
           <div className="col-12">
             <div className="card">
               <div className="card-body">
                 <div className="d-flex align-items-center mb-4">
                   <div className="d-flex flex-column">
-                    <h5>Avaliable Projects</h5>
+                    <h1>Avaliable Projects</h1>
                     <span>
                       {title}
                     </span>
@@ -120,7 +121,7 @@ class AvailableProjects extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
@@ -138,7 +139,7 @@ const mapDispatchToProps = dispatch => ({
 
 AvailableProjects.propTypes = {
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
-  catProjectsData: PropTypes.objectOf(PropTypes.any).isRequired,
+  catProjectsData: PropTypes.arrayOf(PropTypes.any).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   onGetCategoryProjectData: PropTypes.func.isRequired,

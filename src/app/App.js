@@ -2,7 +2,7 @@
 import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter, Route, Switch, Redirect,
+  BrowserRouter, Route, Redirect,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from './layouts/Loader';
@@ -31,6 +31,8 @@ class App extends Component {
     ) : (null)));
 
     const { userData, history } = this.props;
+    let userD = {};
+    if (userData.logged_in) userD = userData.user;
 
     const authPathRegex = /(\/login)|(\/signup)/i;
     const currPath = history.location.pathname;
@@ -56,23 +58,18 @@ class App extends Component {
           <ScrollTop>
             {renderRedirect()}
             <div className="app-body-container">
-              <Navbar userDetails={userData.user} />
-              <Switch>
+              <div className="wrapper-container">
                 {mapRoutes(authRoutes)}
-              </Switch>
-              <Switch>
-                <div className="wrapper-container">
-
-                  <main className="main-container">
-                    <div className="nav-drawer">
-                      <Drawer />
-                    </div>
-                    <div className="main-page">
-                      {mapRoutes(authorizedRoutes)}
-                    </div>
-                  </main>
-                </div>
-              </Switch>
+                <main className="main-container">
+                  <Navbar userDetails={userD} />
+                  <div className="nav-drawer">
+                    <Drawer />
+                  </div>
+                  <div className="main-page">
+                    {mapRoutes(authorizedRoutes)}
+                  </div>
+                </main>
+              </div>
             </div>
           </ScrollTop>
         </Suspense>

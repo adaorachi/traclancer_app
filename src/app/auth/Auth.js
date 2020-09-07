@@ -54,7 +54,6 @@ class Auth extends Component {
     if (location.pathname === '/login') {
       isSignup = false;
     }
-    // console.log(values);
     onGetUserData(values);
   }
 

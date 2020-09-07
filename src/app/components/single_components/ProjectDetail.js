@@ -29,7 +29,7 @@ class ProjectDetail extends Component {
           <div className="card-header bg-info text-white">
             <div className="row">
               <div className="col-md-8">
-                <h4>{project.title}</h4>
+                <h1>{project.title}</h1>
               </div>
               <h5 className="col-md-4">
                 Budget
@@ -76,7 +76,7 @@ class ProjectDetail extends Component {
       );
     }
     return (
-      <div className="avaliable-page-container page-container">
+      <section className="avaliable-page-container page-container">
         <div className="row">
           <div className="col-md-8">
             <div className="row">
@@ -97,7 +97,7 @@ class ProjectDetail extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
@@ -113,7 +113,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 ProjectDetail.propTypes = {
-  projectDetailData: PropTypes.objectOf(PropTypes.any).isRequired,
+  projectDetailData: PropTypes.arrayOf(PropTypes.any).isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   onGetProjectDetailData: PropTypes.func.isRequired,
 };

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as Icon from 'react-feather';
 import PropTypes from 'prop-types';
 import {
   Progress, Popover, message, Menu, Dropdown, Tabs, Modal, Select,
@@ -147,7 +146,7 @@ class ClaimedProjects extends Component {
         <>
           <Popover placement="leftTop" content={content} title="Title">
             <div className="other-info">
-              <Icon.Award />
+              {/* <Icon.Award /> */}
             </div>
           </Popover>
 
@@ -256,19 +255,18 @@ class ClaimedProjects extends Component {
       <div className="project-details-page-container page-container">
         <div className="col-12">
 
-          <div className="header-content p-3 bg-white mb-4">
-            <h5>Current Working Project</h5>
+          <section className="header-content p-3 bg-white mb-4">
+            <h1>Current Working Project</h1>
             <div className="col-12">
               <div className="card mb-0">
                 <div className="card-body">
-                  <h6 className="mb-4">Daily Sales</h6>
                   <div className="row d-flex align-items-center">
                     <div className="col-9">
-                      <h3 className="f-w-300 d-flex align-items-center m-b-0">
+                      <h5 className="f-w-300 d-flex align-items-center m-b-0">
                         <i className="feather icon-arrow-up text-c-green f-30 m-r-5" />
                         {' '}
                         Feature to be implemented
-                      </h3>
+                      </h5>
                     </div>
                     <div className="col-3 text-right">
                       <p className="m-b-0">50%</p>
@@ -277,9 +275,9 @@ class ClaimedProjects extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="card m-0 rounded">
+          <section className="card m-0 rounded">
             <div className="card-body card-container p-0">
               <Tabs type="card" defaultActiveKey="1" onChange={callback}>
                 <TabPane tab="OnGoing Projects" key="1">
@@ -293,7 +291,7 @@ class ClaimedProjects extends Component {
                 </TabPane>
               </Tabs>
             </div>
-          </div>
+          </section>
         </div>
 
       </div>
@@ -312,7 +310,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 ClaimedProjects.propTypes = {
-  claimedProjectData: PropTypes.objectOf(PropTypes.any).isRequired,
+  claimedProjectData: PropTypes.arrayOf(PropTypes.any).isRequired,
   onGetUserClaimedProject: PropTypes.func.isRequired,
 };
 

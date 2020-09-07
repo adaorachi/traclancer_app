@@ -24,26 +24,26 @@ class Projects extends Component {
     const colors = ['bg-pink', 'bg-blue', 'bg-orange', 'bg-green', 'bg-grey', 'bg-dark-blue', 'bg-pink', 'bg-green'];
     if (projectCatData.length > 0) {
       mapProjectCat = projectCatData.map((projectCat, index) => (
-        <div key={projectCat.attributes.id} className="col-md-6 col-xl-4 p-2 my-4">
+        <div key={projectCat.id} className="col-md-6 col-xl-4 p-2 my-4">
           <div className="card-body project-card bg-white p-4">
             <div className="card-icon">
               <div className={`project-icon ${colors[index]}`}>
-                <Icon.Calendar color="#fff" width={28} />
+                <Icon.Layers color="#fff" width={28} />
               </div>
             </div>
             <span className="text-muted f-16">
-              {projectCat.unclaimed_project_no}
+              {projectCat.projects.length}
               {' '}
               projects
             </span>
             <div className="row align-items-center justify-content-center">
               <div className="col">
-                <h5 className="m-0">{projectCat.attributes.title}</h5>
+                <h5 className="m-0">{projectCat.title}</h5>
               </div>
             </div>
             <hr />
             <h6 className="text-muted mt-3 mb-0">
-              <Link to={`/category/${projectCat.attributes.slug}`} className="view-all">View all available projects </Link>
+              <Link to={`/category/${projectCat.slug}`} className="view-all">View all available projects </Link>
             </h6>
           </div>
         </div>
@@ -56,13 +56,13 @@ class Projects extends Component {
       <div className="project-container page-container">
         <div className="available-projects project-category">
           <div className="header-content bg-white p-3 mb-4">
-            <h4>Project Categories</h4>
+            <h1>Project Categories</h1>
           </div>
-          <div className="available-project-main mt-4">
+          <section className="available-project-main mt-4">
             <div className="row">
               {mapProjectCat}
             </div>
-          </div>
+          </section>
         </div>
       </div>
     );
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Projects.propTypes = {
-  projectCatData: PropTypes.objectOf(PropTypes.any).isRequired,
+  projectCatData: PropTypes.arrayOf(PropTypes.any).isRequired,
   onGetProjectCatData: PropTypes.func.isRequired,
 };
 
