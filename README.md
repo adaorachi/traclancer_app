@@ -11,7 +11,7 @@
   </a>
 </p>
 
-### Traclancer
+# Traclancer
 
 A time-tracking application API built with with the React and Redux frameworks coupled with a backend API built with Ruby on Rails. It is an app built for freelancers where they can track the time spent on work. The App is also a freelancing platform where clients or individuals connect with skilled freelancers to conduct business.
 
@@ -42,19 +42,24 @@ A time-tracking application API built with with the React and Redux frameworks c
 * Project form Page
 * Claimed Project Lists Page
 
+### There are two types of users - freelancer and client
+  - A freelancer user can view and perform actions on the Available Project page
+  - A freelancer user can also view and perform actions on the Claimed Project page
+  - A client user can view and perform actions on the Create Project page.
+
 <img src="src/assets/screenshots/shot1.png"/><br />
 <img src="src/assets/screenshots/shot2.png"/><br />
 <img src="src/assets/screenshots/shot3.png"/><br />
 <!-- BUILT WITH -->
 
-# Built With
+## Built With
 
 - VsCode
 - Windows
 
 <!-- TECHNOLOGIES EMPLOYED -->
 
-# Technologies Employed
+## Technologies Employed
 
 - Ruby on Rails
 - React Hooks
@@ -136,7 +141,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-# Author
+## Author
 
 **MaryAnn Chukwuka**
 
@@ -145,7 +150,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Linkedin: [MaryAnn Chukwuka](https://https://www.linkedin.com/in/adaorachi/)
   <br />
 
-# License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
