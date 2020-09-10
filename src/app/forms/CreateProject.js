@@ -10,10 +10,7 @@ import {
   DatePicker,
   InputNumber,
   Switch,
-  Upload,
 } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
-// import Tags from '../elements/Tags';
 
 class CreateProject extends Component {
   constructor(props) {
@@ -21,59 +18,43 @@ class CreateProject extends Component {
 
     this.state = {
       textarea: '',
-      files: [],
-      tags: [],
     };
 
     this.handleReset = this.handleReset.bind(this);
-    this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTag = this.handleTag.bind(this);
     this.formRef = React.createRef();
-  }
-
-  handleTag(value) {
-    this.setState({
-      tags: value,
-    });
   }
 
   handleReset() {
     this.formRef.current.resetFields();
   }
 
-  handleFile(e) {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    this.setState({
-      files: e.fileList,
-    });
-    return e && e.fileList;
-  }
-
   handleSubmit() {
-    const { textarea, files, tags } = this.state;
+    const { textarea } = this.state;
     const aa = ['title', 'estimated_time', 'budget'];
     const values = {};
     aa.forEach(a => {
       values[a] = document.getElementById(a).value;
     });
     values.description = textarea;
-    values.attachment_url = files;
-    // values.attachment_url = 'files';
     values.request_detail = document.getElementById('request_detail').getAttribute('aria-checked');
     values.project_category_id = 2;
     values.owned_user_id = 10;
-    values.skill_set = tags;
 
-    const url = 'http://localhost:3001/api/v1/';
-    axios.post(`${url}projects`,
-      values,
-      { withCredentials: true }).then(res => {
+    const url = 'https://ancient-ocean-05868.herokuapp.com/api/v1/';
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    if (token) {
+      axios.post(`${url}projects`,
+        values,
+        { headers }).then(res => {
       // eslint-disable-next-line no-console
-      console.log(res);
-    });
+        console.log(res);
+      });
+    }
   }
 
   render() {
@@ -127,31 +108,6 @@ class CreateProject extends Component {
                   }}
                 />
 
-              </div>
-            </Form.Item>
-
-            {/* <Form.Item
-              className="card-input"
-              name="skill_set"
-            >
-              <label htmlFor="skill_set">Required Skill Sets</label>
-              <div className="form-group">
-                <Tags handleTag={this.handleTag} />
-              </div>
-            </Form.Item> */}
-
-            <Form.Item>
-              <div className="form-group">
-                <label htmlFor="project-attachment">Attach files</label>
-                <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={this.handleFile} noStyle>
-                  <Upload.Dragger name="files" action="/upload.do">
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">Support for a single or bulk upload.</p>
-                  </Upload.Dragger>
-                </Form.Item>
               </div>
             </Form.Item>
 
