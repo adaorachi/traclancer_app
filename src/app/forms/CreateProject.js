@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -10,6 +11,7 @@ import {
   DatePicker,
   InputNumber,
   Switch,
+  notification,
 } from 'antd';
 
 class CreateProject extends Component {
@@ -30,6 +32,7 @@ class CreateProject extends Component {
   }
 
   handleSubmit() {
+    const { history } = this.props;
     const { textarea } = this.state;
     const aa = ['title', 'estimated_time', 'budget'];
     const values = {};
@@ -51,7 +54,12 @@ class CreateProject extends Component {
       axios.post(`${url}projects`,
         values,
         { headers }).then(res => {
-      // eslint-disable-next-line no-console
+        notification.success({
+          message: 'Project sucessfully created!',
+          placement: 'topRight',
+        });
+        history.push('/');
+        // eslint-disable-next-line no-console
         console.log(res);
       });
     }
@@ -172,5 +180,9 @@ class CreateProject extends Component {
     );
   }
 }
+
+CreateProject.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default CreateProject;

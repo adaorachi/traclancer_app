@@ -21,9 +21,9 @@ class Navbar extends Component {
 
   handleLogOut() {
     const { history } = this.props;
-    const url = 'http://localhost:3001/api/v1/';
-    axios.delete(`${url}logout`,
-      { withCredentials: true }).then(res => {
+    const url = 'https://ancient-ocean-05868.herokuapp.com/api/v1/';
+    // const url = 'http://localhost:3001/api/v1/';
+    axios.delete(`${url}logout`).then(res => {
       if (res.data.logged_out) {
         localStorage.removeItem('token');
         history.push('/login');
