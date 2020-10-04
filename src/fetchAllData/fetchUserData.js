@@ -7,9 +7,9 @@ export const getUserData = (userData, isSignUp = true) => {
   const endPoint = (isSignUp) ? `${url}registrations` : `${url}login`;
   return dispatch => axios
     .post(endPoint,
-      { user: userData },
-      { withCredentials: true }).then(response => {
+      { user: userData }).then(response => {
       dispatch(getUserSuccess(response.data));
+      console.log(response.data);
       localStorage.setItem('token', response.data.jwt);
     }).catch(error => {
     });
