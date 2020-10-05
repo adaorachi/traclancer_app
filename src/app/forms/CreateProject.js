@@ -53,6 +53,7 @@ class CreateProject extends Component {
     if (token) {
       axios.post(`${url}projects`,
         values,
+        // eslint-disable-next-line no-unused-vars
         { headers }).then(res => {
         notification.success({
           message: 'Project sucessfully created!',
@@ -60,7 +61,7 @@ class CreateProject extends Component {
         });
         history.push('/');
         // eslint-disable-next-line no-console
-        console.log(res);
+        // console.log(res);
       });
     }
   }
