@@ -1,0 +1,186 @@
+.page-container {
+  padding: 1rem;
+
+  .header-content {
+    background: rgba(255, 255, 255, 0.55);
+    margin: -30px -30px 30px !important;
+  }
+}
+
+.dashboard-container {
+  .card {
+    .widget-content-wrapper {
+      font-size: 1rem;
+
+      .widget-numbers {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.project-container {
+  .row > * {
+    box-sizing: border-box;
+  }
+
+  .view-all {
+    color: #01dbdf;
+
+    &:hover {
+      color: #02c2c5;
+    }
+  }
+}
+
+.available-project-container,
+.project-details-page-container {
+  .list-group-item {
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+
+    .heading-title-non-highlight,
+    .heading-title {
+      color: $theme_color1;
+    }
+
+    .heading-title {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.project-details-page-container {
+  .nav-item.active {
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 4px;
+      background-color: $theme_color1;
+      position: absolute;
+      bottom: 0;
+
+      a {
+        color: #01a9ac;
+      }
+    }
+  }
+}
+
+.button-primary {
+  background: $theme-color2_linear;
+}
+
+.button-info {
+  background: $theme-color_linear;
+}
+
+.button-blue {
+  background: #1dc4e9;
+}
+
+.bg-orange {
+  background: linear-gradient(to right, #fe9365, #feb798) !important;
+}
+
+.bg-blue {
+  background: linear-gradient(to right, #01a9ac, #01dbdf) !important;
+}
+
+.bg-green {
+  background: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
+}
+
+.bg-pink {
+  background: linear-gradient(to right, #fe5d70, #fe909d) !important;
+}
+
+.button-info,
+.button-primary,
+.button-blue {
+  border-radius: 15px;
+  // box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  // padding: 4px 10px;
+  min-height: auto;
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  color: #fff;
+
+  &:hover {
+    color: rgb(226, 224, 224);
+  }
+}
+
+.bg-turguiose {
+  background: linear-gradient(to right, #01a9ac, #01dbdf);
+}
+
+.bg-grey {
+  background: linear-gradient(to right, #bdc3c7, #2c3e50);
+}
+
+.bg-dark-blue {
+  background: linear-gradient(to right, #000428, #004e92);
+}
+
+.create-project-form {
+  .ant-row.ant-form-item {
+    margin-bottom: 15px !important;
+  }
+
+  .project-stage-card,
+  .ant-btn.ant-btn-dashed {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .ant-btn.ant-btn-dashed {
+    @include flex(true);
+
+    width: 15rem;
+    min-height: 15rem;
+    max-width: 100%;
+
+    span {
+      margin: 0 !important;
+    }
+  }
+
+  .ant-space-item {
+    position: relative;
+  }
+
+  .anticon.anticon-minus-circle {
+    position: absolute;
+    right: 0;
+    top: -10px;
+  }
+}
+
+.ant-btn.add-button {
+  background: transparent !important;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  right: 1rem;
+  top: 5rem;
+}
+
+.anticon.anticon-plus,
+.add-button {
+  @include flex(false);
+
+  width: 3rem;
+  height: 3rem;
+  background: $theme-color_linear !important;
+  color: #fff;
+  border-radius: 50%;
+}

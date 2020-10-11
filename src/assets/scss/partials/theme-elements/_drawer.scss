@@ -1,0 +1,61 @@
+.nav-drawer {
+  background: $theme-color2;
+  height: 100vh;
+  width: 220px;
+  left: 0;
+  color: #a9b7d0;
+  position: fixed;
+  transition: left 650ms;
+
+  &.close-d {
+    left: -220px;
+  }
+
+  &.open-d {
+    left: 0;
+  }
+
+  @media screen and (max-width: 789px) {
+    & {
+      top: 0;
+      z-index: 9999;
+    }
+  }
+
+  .nav-drawer-container {
+    .navbar-drawer-links {
+      padding: 2rem 0;
+      width: 100%;
+    }
+
+    .nav-item {
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 0 1.4rem;
+
+      .list-name {
+        margin-left: 0.6rem;
+      }
+
+      &.active {
+        background: #6274944d;
+
+        .list-name {
+          color: #1dc4e9;
+        }
+      }
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      color: #dedede;
+      padding: 0.9rem 0;
+
+      .list-icon {
+        display: flex;
+      }
+    }
+  }
+}

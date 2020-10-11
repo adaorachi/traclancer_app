@@ -1,41 +1,139 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-## Available Scripts
+<p align="center">
+  <a href="https://www.ruby-lang.org/en/">
+    <img src="https://img.shields.io/badge/React-v16.3.1-brightgreen.svg" alt="ruby version">
+    <img src="https://img.shields.io/badge/Redux-v4.0.5-brightgreen.svg" alt="ruby version">
+  </a>
+</p>
 
-In the project directory, you can run:
+# Traclancer
 
-### `yarn start`
+A time-tracking application API built with with the React and Redux frameworks coupled with a backend API built with Ruby on Rails. It is an app built for freelancers where they can track the time spent on work. The App is also a freelancing platform where clients or individuals connect with skilled freelancers to conduct business.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [User Features](#user-features)
+- [Built With](#built-with)
+- [Technologies Employed](#technologies-employed)
+- [Live Preview](#live-preview)
+- [Required Installations](#required-installations)
+- [App Installation](#instalation)
+- [Future Features](#future-features)
+- [License](#license)
+- [Author](#author)
+- [Acknowledgements](#acknowledgements)
 
-### `yarn test`
+<!-- User features -->
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## User Features
 
-### `yarn build`
+- A user can log in to the app and have their login credentials saved on the back-end.
+- A user can navigate through the following pages of the site:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Dashboard
+* Project Categories
+* Avaliable Project Lists Page
+* Project details Page
+* Project form Page
+* Claimed Project Lists Page
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### There are two types of users - freelancer and client
+  - A freelancer user can view and perform actions on the Available Project page
+  - A freelancer user can also view and perform actions on the Claimed Project page
+  - A client user can view and perform actions on the Create Project page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="src/assets/screenshots/shot1.png"/><br />
+<img src="src/assets/screenshots/shot2.png"/><br />
+<img src="src/assets/screenshots/shot3.png"/><br />
+<!-- BUILT WITH -->
 
-### `yarn eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- VsCode
+- Windows
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- TECHNOLOGIES EMPLOYED -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Technologies Employed
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Ruby on Rails
+- React Hooks
+- Redux Store
+- React Routers
+- Jest auto watch
+- CSS Modules
+
+<!-- LIVE PREVIEW -->
+
+## Live Preview
+* Here is a link to the live frontend version of the app - https://traclancer.netlify.app/
+
+* Here is a link to the backend Rails-API source code of the site - https://github.com/adaorachi/traclancer_api.git
+<!-- REQUIRED INSTALLATION -->
+
+## Required Installations
+
+- npm
+- Ruby v2.6
+- Rails v5.2
+
+<!-- INSTALLATION -->
+
+## Installation of This Repository
+
+Clone the Repository,
+
+```Shell
+your@pc:~$ git clone https://github.com/adaorachi/traclancer_app.git
+```
+
+Go to the downloaded folder
+
+```Shell
+your@pc:~$ cd traclancer_app/
+```
+
+Install all packages
+
+```Shell
+your@pc:~$ npm install
+```
+
+Start the server
+
+```Shell
+your@pc:~$ npm start
+```
+
+The app will open on your local host port 3000.
+
+<!-- run tests -->
+
+## Run tests
+
+Run all tests
+
+```Shell
+your@pc:~$ npm test
+```
+
+Run specific tests
+
+```Shell
+your@pc:~$ npm test src/tests/<testfile>
+```
+
+<!-- Future features -->
+
+## Future Features
+
+- Build Chatting system for users.
+- Build a more secured authentication system
 
 ## Learn More
 
@@ -43,26 +141,36 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**MaryAnn Chukwuka**
 
-### Analyzing the Bundle Size
+- Github: [@adaorachi](https://github.com/adaorachi)
+- Twitter: [@MaryAnn_Chukwuka](https://twitter.com/Chukwuka-maryann)
+- Linkedin: [MaryAnn Chukwuka](https://https://www.linkedin.com/in/adaorachi/)
+  <br />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## License
 
-### Making a Progressive Web App
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+<!-- ACKNOWLEDGEMENTS -->
 
-### Advanced Configuration
+## Acknowledgements
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- [Microverse](https://www.microverse.org/)
+- [The Odin Project](https://www.theodinproject.com/)
 
-### Deployment
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[contributors-shield]: https://img.shields.io/github/contributors/adaorachi/traclancer_app.svg?style=flat-square
+[contributors-url]: https://github.com/adaorachi/traclancer_app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/adaorachi/traclancer_app
+[forks-url]: https://github.com/adaorachi/traclancer_app/network/members
+[stars-shield]: https://img.shields.io/github/stars/adaorachi/traclancer_app
+[stars-url]: https://github.com/mikenath223/trixxcare/stargazers
+[issues-shield]: https://img.shields.io/github/issues/adaorachi/traclancer_app
+[issues-url]: https://github.com/adaorachi/traclancer_app/issues
+[license-shield]: https://img.shields.io/github/license/adaorachi/traclancer_app
+[license-url]: https://github.com/adaorachi/traclancer_app/blob/master/LICENSE.txt
